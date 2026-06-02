@@ -33,9 +33,52 @@
 
 ---
 
-## 2. 代码补丁（共 3 个文件）
+## 2. DynamicEmb 编译说明
 
-### 2.1 `examples/hstu/modules/hstu_attention.py`
+### 2.1 问题
+
+`corelib/dynamicemb/setup.py` 在文件顶部直接导入了 `torch`：
+
+```python
+# corelib/dynamicemb/setup.py (line 23)
+from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+```
+
+这导致 `pip install .` 在默认模式下失败——pip 会创建一个隔离的构建环境（build isolation），
+该环境中没有 `torch`，于是 `setup.py` 在解析阶段就报 `ModuleNotFoundError: No module named 'torch'`。
+
+### 2.2 解决方案
+
+使用 `--no-build-isolation` 标志，让 pip 直接使用当前环境中已安装的 `torch`：
+
+```bash
+cd corelib/dynamicemb
+pip install . --no-build-isolation
+```
+
+### 2.3 setup.py 的其他行为
+
+`setup.py` 在执行时会：
+
+1. **自动卸载** 已有的 `dynamicemb`（使用 `--break-system-packages` 绕过系统保护）
+2. **自动安装** `ordered-set` 依赖（同样使用 `--break-system-packages`）
+3. **检查 torchrec 版本** ≥ 1.2.0，版本不满足会直接报错
+4. **构建 CUDA 扩展** `dynamicemb_extensions`，支持 sm_75 / sm_80 / sm_90 架构
+
+编译使用 `NinjaBuildExtension`，会自动根据 CPU 核心数和可用内存计算并行编译任务数
+（每个任务峰值内存约 12GB，多架构 nvcc 编译时占用较大）。
+
+### 2.4 验证安装
+
+```bash
+python3 -c "import dynamicemb; print(dynamicemb.__version__)"
+```
+
+---
+
+## 3. 代码补丁（共 3 个文件）
+
+### 3.1 `examples/hstu/modules/hstu_attention.py`
 
 **问题**: 文件顶层 `from hstu import hstu_attn_varlen_func`，当 `hstu` 包未安装时
 （例如 PPU 环境未编译 FBGEMM HSTU CUDA kernel），即使选择 `pytorch` 后端也会导入失败。
@@ -60,7 +103,7 @@
          return hstu_attn_varlen_func(
 ```
 
-### 2.2 `examples/hstu/ops/fused_hstu_op.py`
+### 3.2 `examples/hstu/ops/fused_hstu_op.py`
 
 **问题**: 文件顶层无条件导入 `hstu` 和 `hstu.hstu_ops_gpu`，在 `hstu` 包未安装时直接报错。
 
@@ -79,7 +122,7 @@
 +    pass
 ```
 
-### 2.3 `examples/hstu/training/trainer/utils.py`
+### 3.3 `examples/hstu/training/trainer/utils.py`
 
 **问题**: 当 `tensor_model_parallel_size == 1` 时，`layer_type` 始终设为 `FUSED`。
 `FUSED` 模式使用 `FusedHSTULayer`，其内部直接调用 CUTLASS kernel
@@ -103,7 +146,7 @@
 
 ---
 
-## 3. 配置修改（1 个文件）
+## 4. 配置修改（1 个文件）
 
 ### `examples/hstu/training/configs/movielen_retrieval.gin`
 
@@ -119,7 +162,7 @@
 
 ---
 
-## 4. 数据准备
+## 5. 数据准备
 
 MovieLens-1M 数据集已预处理并存放于 `examples/commons/tmp_data/ml-1m/`。
 
@@ -139,7 +182,7 @@ python3 ./hstu_data_preprocessor.py --dataset_name ml-1m
 
 ---
 
-## 5. 启动训练
+## 6. 启动训练
 
 ```bash
 cd <repo-root>/examples/hstu
@@ -151,14 +194,14 @@ PYTHONPATH=${PYTHONPATH}:$(realpath ../) \
 
 ---
 
-## 6. 问题排查记录
+## 7. 问题排查记录
 
 | # | 错误 | 原因 | 解决方案 |
 |---|---|---|---|
-| 1 | `ModuleNotFoundError: No module named 'dynamicemb'` | dynamicemb 未安装 | `cd corelib/dynamicemb && pip install . --no-build-isolation` |
-| 2 | `ModuleNotFoundError: No module named 'hstu'` | hstu 顶层导入失败 | 改为懒加载（补丁 2.1） |
-| 3 | `ModuleNotFoundError: No module named 'hstu.hstu_ops_gpu'` | hstu 顶层导入失败 | try/except 包裹（补丁 2.2） |
-| 4 | `ModuleNotFoundError: No module named 'hstu_cuda_ops'` | commons CUDA ops 未编译 | 编译并安装 hstu_cuda_ops |
-| 5 | `FileNotFoundError: 'tmp_data//ml-1m/processed_seqs.csv'` | 数据路径未找到 | 创建 tmp_data 符号链接 |
-| 6 | `AssertionError: num_contextuals must be an int when kernel backend is triton` | FUSED layer 走 CUTLASS 路径 | pytorch 后端使用 DEBUG layer type（补丁 2.3） |
-| 7 | `pip install .` 在 dynamicemb 构建时找不到 torch | pip build isolation 隔离了环境 | 使用 `--no-build-isolation` |
+| 1 | `pip install .` 构建 dynamicemb 时报 `ModuleNotFoundError: No module named 'torch'` | `setup.py` 顶层导入了 `torch`，pip 默认 build isolation 环境中无 torch | 使用 `pip install . --no-build-isolation`（见 §2） |
+| 2 | `ModuleNotFoundError: No module named 'dynamicemb'` | dynamicemb 未安装 | `cd corelib/dynamicemb && pip install . --no-build-isolation` |
+| 3 | `ModuleNotFoundError: No module named 'hstu'` | hstu 顶层导入失败 | 改为懒加载（补丁 3.1） |
+| 4 | `ModuleNotFoundError: No module named 'hstu.hstu_ops_gpu'` | hstu 顶层导入失败 | try/except 包裹（补丁 3.2） |
+| 5 | `ModuleNotFoundError: No module named 'hstu_cuda_ops'` | commons CUDA ops 未编译 | 编译并安装 hstu_cuda_ops |
+| 6 | `FileNotFoundError: 'tmp_data//ml-1m/processed_seqs.csv'` | 数据路径未找到 | 创建 tmp_data 符号链接 |
+| 7 | `AssertionError: num_contextuals must be an int when kernel backend is triton` | FUSED layer 走 CUTLASS 路径 | pytorch 后端使用 DEBUG layer type（补丁 3.3） |

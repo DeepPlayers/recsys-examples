@@ -33,6 +33,11 @@ echo "  Repo root: $REPO_ROOT"
 echo "============================================"
 
 # ── Step 1: 安装 dynamicemb ──────────────────────────────────────────────────
+# corelib/dynamicemb/setup.py 在文件顶层导入了 torch:
+#   from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+# pip 默认的 build isolation 会创建隔离环境，其中没有 torch，导致:
+#   ModuleNotFoundError: No module named 'torch'
+# 解决方案: --no-build-isolation，让 pip 使用当前环境中已安装的 torch
 echo ""
 echo "[1/6] Installing dynamicemb ..."
 if python3 -c "import dynamicemb" 2>/dev/null; then
