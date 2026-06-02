@@ -1,6 +1,13 @@
 __pycache__
 *.so
 build
+torch_binding_build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.o
+*.o.d
 .coverage_*
 *.egg-info
 *~

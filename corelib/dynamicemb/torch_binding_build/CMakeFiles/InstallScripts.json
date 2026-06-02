@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/workspace/dewu/recsys-examples-main/corelib/dynamicemb/torch_binding_build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

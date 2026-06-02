@@ -239,3 +239,91 @@ PYTHONPATH=${PYTHONPATH}:$(realpath ../) \
 | 8 | `ModuleNotFoundError: No module named 'gin'` | gin-config 未预装 | `pip install gin-config nvtx torchx` |
 | 9 | `zipfile.BadZipFile: File is not a zip file` | 预处理器下载的 ml-1m.zip 不完整 | 用 `curl -L` 手动下载后重新预处理（见 §5） |
 | 10 | 训练无输出（静默完成） | `log_interval=100` 大于 ml-1m 每 epoch 步数(~47) | 降低 `log_interval` 和 `eval_interval`（见 §4） |
+
+---
+
+## 8. Dev 分支优化总结
+
+在 PPU 环境部署过程中，我们对 dev 分支的改动进行了全面审查和优化，确保只保留必要的 PPU 适配改动，移除无关变更和功能性回退。
+
+### 8.1 清理内容
+
+#### 构建产物（52 个文件，172K+ 行）
+- **移除**: `corelib/dynamicemb/torch_binding_build/` 整个目录
+- **原因**: CMake 构建产物（`.o`, `CMakeCache.txt`, `Makefile` 等）不应入库
+- **措施**: 添加到 `.gitignore`，防止再次提交
+
+#### 临时文件和无关新增
+- **移除**: `demo.py`（临时调试脚本）
+- **移除**: `inference_emb_ops_build_changes.md`（推理侧编译笔记，与训练无关）
+- **移除**: `examples/hstu/env.sh`（环境构建脚本，应作为 wiki 而非代码）
+- **移除**: `examples/hstu/Megatron-LM`（submodule 引用残留）
+
+#### Benchmark 改动
+- **回退**: `examples/hstu/training/benchmark/` 目录下所有改动
+- **回退**: `third_party/FBGEMM` submodule 指针更新
+- **原因**: 这些是独立的功能迭代，与 PPU 适配无关
+
+### 8.2 回退的功能性改动
+
+以下改动不是 PPU 必须的，属于功能回退，已全部恢复为 main 分支版本：
+
+| 文件 | 回退内容 | 影响 |
+|------|---------|------|
+| `corelib/dynamicemb/dynamicemb/batched_dynamicemb_function.py` | 恢复 `_copy_cuda_tensor_to_pinned_cpu`、`_scalar_item`、`_bool_item` 辅助函数 | 恢复 pinned memory 优化，提升 D2H 拷贝性能 |
+| `examples/commons/datasets/hstu_batch.py` | 恢复 `HSTUBatch.slice()` 方法（106 行） | 恢复 batch 切片功能，被 `hstu_random_dataset.py` 和 `test_utils.py` 使用 |
+| `examples/commons/datasets/hstu_random_dataset.py` | 恢复使用 `batch.slice()` 的实现 | 与 `hstu_batch.py` 联动 |
+| `examples/commons/distributed/batch_shuffler.py` | 恢复 `tensor_from_cpu_array_like` / `tensor_to_cpu_list` 调用 | 恢复自定义 tensor transfer 工具 |
+| `examples/commons/perf_model/partitioner.py` | 恢复 `kk_cpu_ops` C++ 加速器加载逻辑 | 恢复 KK 分区 C++ 加速，释放 GIL 提升并发 |
+| `examples/commons/setup.py` | 恢复 `kk_cpu_ops` CppExtension 和 `BUILD_EXT_ONLY` 过滤机制 | 恢复完整构建能力 |
+| `examples/commons/utils/perf.py` | 恢复 H100 peak TFLOPS 为 989，`cal_hstu_flops` 使用 all_reduce | 恢复原始 FLOPS 统计逻辑 |
+| `examples/hstu/utils/gin_config_args.py` | 恢复 `DynamicEmbeddingArgs.dist_type` 字段 | 恢复 row-wise sharding 输入分布策略配置 |
+| `examples/hstu/training/trainer/training.py` | 恢复 `_warm_up_data_parallel_collective()` 函数及调用 | 恢复多卡训练 warmup collective，提升稳定性 |
+| `examples/hstu/test_utils.py` | 恢复使用 `batch.slice()` 的实现 | 与 `hstu_batch.py` 联动 |
+
+### 8.3 保留的 PPU 适配改动
+
+以下改动是 PPU 环境必须的，已保留：
+
+| 文件 | 改动 | 必要性 |
+|------|------|--------|
+| `corelib/dynamicemb/src/table_operation/types.cuh` | `__cvta_generic_to_shared` 声明加 `#if !defined(___HGGC_DEVICE_FUNCTIONS_H___)` 保护 | PPU SDK 强制 include 同名声明，避免 linkage 冲突 |
+| `corelib/dynamicemb/src/table_operation/kernels.cuh` | `bucket.probe<>()` → `bucket.template probe<>()`；`pred.template operator()` → `pred()` | PPU nvcc 对 dependent name 解析更严格 |
+| `examples/hstu/modules/hstu_attention.py` | 顶层 `from hstu import` 改为 `forward()` 内懒加载 | PPU 无 FBGEMM HSTU kernel，避免导入失败 |
+| `examples/hstu/ops/fused_hstu_op.py` | `import hstu` / `import hstu.hstu_ops_gpu` 用 `try/except` 包裹 | PPU 无 hstu 包，避免导入失败 |
+| `examples/hstu/training/trainer/utils.py` | `kernel_backend == PYTORCH` 时强制 `DEBUG` layer type | PPU 无 CUTLASS kernel，避免运行时报错 |
+| `examples/hstu/training/configs/movielen_retrieval.gin` | `kernel_backend = "pytorch"`；`log_interval = 10`；`eval_interval = 20` | PPU 使用 pytorch 后端；降低日志间隔提升可见性 |
+| `corelib/hstu/setup.py` | `subprocess.check_output("git rev-parse HEAD")` 加 `try/except` | PPU 容器无 git 历史，避免 CalledProcessError |
+| `examples/commons/utils/initialize.py` | 删除 `initialize_distributed()` 中的 print rank 日志 | 简化日志输出，非必须但无害 |
+
+### 8.4 配置文件调整
+
+| 文件 | 调整 | 原因 |
+|------|------|------|
+| `examples/hstu/training/configs/movielen_retrieval.gin` | `dataset_name` 恢复为 `'ml-20m'` | ml-1m 仅用于快速验证，ml-20m 是标准训练集 |
+| `examples/hstu/training/trainer/utils.py` | 恢复 `dist_type=embedding_args.dist_type` 参数传递 | 与 `gin_config_args.py` 联动，恢复完整配置 |
+
+### 8.5 优化效果
+
+优化后的 dev 分支改动从 **88 个文件（174K+ 行）** 精简到 **约 20 个文件（~500 行）**：
+
+| 类别 | 优化前 | 优化后 | 减少 |
+|------|--------|--------|------|
+| 构建产物 | 52 文件 | 0 文件 | -52 |
+| 临时文件 | 4 文件 | 0 文件 | -4 |
+| Benchmark 改动 | ~15 文件 | 0 文件 | -15 |
+| 功能性回退 | 10 文件 | 0 文件 | -10 |
+| PPU 适配 | 7 文件 | 7 文件 | 0 |
+| 配置调整 | 2 文件 | 2 文件 | 0 |
+
+**最终改动**仅包含：
+- PPU 环境适配代码（7 个文件）
+- 部署文档和脚本（2 个文件：`HSTU_TRAINING_SETUP.md`、`setup_and_train.sh`）
+- 配置文件调整（2 个文件：gin config、utils.py）
+- `.gitignore` 更新（防止构建产物再次入库）
+
+### 8.6 后续建议
+
+1. **验证训练**: 在 PPU 环境使用 ml-20m 数据集运行完整训练，确认 PPU 适配改动有效
+2. **合入 main**: 审查通过后可将 dev 分支合入 main，保留 PPU 适配能力
+3. **监控构建**: 确保 `.gitignore` 生效，`torch_binding_build/` 不再被意外提交
