@@ -212,7 +212,7 @@ Examples:
     parser.add_argument(
         "--kernel_backend",
         type=str,
-        choices=["triton", "cutlass"],
+        choices=["triton", "cutlass", "pytorch"],
         default="triton",
         help="Attention kernel backend (default: triton)",
     )

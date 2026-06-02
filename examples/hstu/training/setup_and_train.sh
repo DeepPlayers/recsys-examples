@@ -271,7 +271,11 @@ echo "============================================"
 echo ""
 
 cd "$HSTU_DIR"
-PYTHONPATH="${PYTHONPATH:-}:$(realpath ../)" \
+# PYTHONPATH 需要同时包含三层目录:
+#   - examples/            (用于 import commons.*)
+#   - examples/hstu/       (用于 import configs, model, modules, utils)
+#   - examples/hstu/training/ (用于 import trainer)
+PYTHONPATH="${PYTHONPATH:-}:$(realpath ../):$(realpath .):$(realpath ./training)" \
     torchrun --nproc_per_node 1 --master_addr localhost --master_port 6000 \
     ./training/pretrain_gr_retrieval.py \
     --gin-config-file ./training/configs/movielen_retrieval.gin
