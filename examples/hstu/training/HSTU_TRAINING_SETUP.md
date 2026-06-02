@@ -17,8 +17,15 @@
 
 ### 已预装可直接使用的包
 
-- `fbgemm_gpu`, `torchrec`, `megatron-core`, `gin-config`, `iopath`,
-  `nvtx`, `pandas`, `torchmetrics==1.0.3`, `torchx`
+- `fbgemm_gpu`, `torchrec`, `megatron-core`, `iopath`,
+  `pandas`, `torchmetrics==1.0.3`
+
+> **注意**: `gin-config`, `nvtx`, `torchx` 在部分 PPU 环境中未预装，需要手动安装：
+> ```bash
+> pip install gin-config nvtx torchx
+> ```
+> `megatron-core` 在 PPU 镜像源中可能无法通过 `pip install` 安装（版本兼容性检查失败），
+> 但环境中可能已预装。请先用 `python3 -c "import megatron.core"` 验证。
 
 ### 需要手动安装的包
 
@@ -160,6 +167,19 @@ python3 -c "import dynamicemb; print(dynamicemb.__version__)"
 > 如需使用 CUTLASS 后端（需要 A100/H100 等 NVIDIA GPU + 编译 FBGEMM HSTU），
 > 将值改为 `"cutlass"` 并确保 `hstu` 包已正确安装。
 
+### `log_interval` / `eval_interval` 调整
+
+默认配置中 `log_interval = 100` 和 `eval_interval = 100`，但 ml-1m 数据集
+（6040 users / batch 128 ≈ 47 steps/epoch）每 epoch 不到 100 步，导致训练过程
+**没有任何日志输出**。建议降低间隔：
+
+```diff
+-TrainerArgs.eval_interval = 100
+-TrainerArgs.log_interval = 100
++TrainerArgs.eval_interval = 20
++TrainerArgs.log_interval = 10
+```
+
 ---
 
 ## 5. 数据准备
@@ -179,6 +199,17 @@ cd <repo-root>/examples/commons
 mkdir -p ./tmp_data
 python3 ./hstu_data_preprocessor.py --dataset_name ml-1m
 ```
+
+> **已知问题**: `hstu_data_preprocessor.py` 内部使用 `urlretrieve` 下载 ml-1m.zip，
+> 在网络不稳定时可能产生不完整的 zip 文件，导致 `zipfile.BadZipFile: File is not a zip file` 错误。
+> 解决方案：手动使用 `curl` 下载后再运行预处理器：
+> ```bash
+> cd <repo-root>/examples/commons
+> mkdir -p ./tmp_data
+> rm -f ./tmp_data/movielens1m.zip
+> curl -L -o ./tmp_data/movielens1m.zip http://files.grouplens.org/datasets/movielens/ml-1m.zip
+> python3 ./hstu_data_preprocessor.py --dataset_name ml-1m
+> ```
 
 ---
 
@@ -205,3 +236,6 @@ PYTHONPATH=${PYTHONPATH}:$(realpath ../) \
 | 5 | `ModuleNotFoundError: No module named 'hstu_cuda_ops'` | commons CUDA ops 未编译 | 编译并安装 hstu_cuda_ops |
 | 6 | `FileNotFoundError: 'tmp_data//ml-1m/processed_seqs.csv'` | 数据路径未找到 | 创建 tmp_data 符号链接 |
 | 7 | `AssertionError: num_contextuals must be an int when kernel backend is triton` | FUSED layer 走 CUTLASS 路径 | pytorch 后端使用 DEBUG layer type（补丁 3.3） |
+| 8 | `ModuleNotFoundError: No module named 'gin'` | gin-config 未预装 | `pip install gin-config nvtx torchx` |
+| 9 | `zipfile.BadZipFile: File is not a zip file` | 预处理器下载的 ml-1m.zip 不完整 | 用 `curl -L` 手动下载后重新预处理（见 §5） |
+| 10 | 训练无输出（静默完成） | `log_interval=100` 大于 ml-1m 每 epoch 步数(~47) | 降低 `log_interval` 和 `eval_interval`（见 §4） |

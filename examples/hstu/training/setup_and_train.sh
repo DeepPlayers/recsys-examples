@@ -10,12 +10,13 @@
 #    bash setup_and_train.sh /path/to/recsys-examples
 #
 #  功能:
-#    1. 安装 dynamicemb
-#    2. 编译并安装 hstu_cuda_ops (commons CUDA 扩展)
-#    3. 自动应用 3 处代码补丁 (使 pytorch 后端无需 FBGEMM HSTU kernel)
-#    4. 创建数据目录符号链接
-#    5. 按需预处理 MovieLens-1M 数据集
-#    6. 启动 training
+#    1. 安装缺失的预装依赖 (gin-config, nvtx, torchx)
+#    2. 安装 dynamicemb
+#    3. 编译并安装 hstu_cuda_ops (commons CUDA 扩展)
+#    4. 自动应用 3 处代码补丁 (使 pytorch 后端无需 FBGEMM HSTU kernel)
+#    5. 配置 gin (kernel_backend + log/eval interval)
+#    6. 创建数据目录符号链接 & 按需预处理 MovieLens-1M 数据集
+#    7. 启动 training
 # ============================================================================
 set -euo pipefail
 
@@ -32,14 +33,27 @@ echo "  HSTU Training Setup"
 echo "  Repo root: $REPO_ROOT"
 echo "============================================"
 
-# ── Step 1: 安装 dynamicemb ──────────────────────────────────────────────────
+# ── Step 1: 安装缺失预装依赖 ─────────────────────────────────────────────────
+# 部分 PPU 环境中 gin-config, nvtx, torchx 未预装
+# megatron-core 通常已预装，若 pip install 失败可跳过
+echo ""
+echo "[1/7] Installing prerequisite packages ..."
+pip install gin-config nvtx torchx 2>/dev/null | tail -3
+if python3 -c "import megatron.core" 2>/dev/null; then
+    echo "  -> megatron-core already available."
+else
+    echo "  -> WARNING: megatron-core not found. Please install it for your environment."
+fi
+echo "  -> Prerequisites done."
+
+# ── Step 2: 安装 dynamicemb ──────────────────────────────────────────────────
 # corelib/dynamicemb/setup.py 在文件顶层导入了 torch:
 #   from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 # pip 默认的 build isolation 会创建隔离环境，其中没有 torch，导致:
 #   ModuleNotFoundError: No module named 'torch'
 # 解决方案: --no-build-isolation，让 pip 使用当前环境中已安装的 torch
 echo ""
-echo "[1/6] Installing dynamicemb ..."
+echo "[2/7] Installing dynamicemb ..."
 if python3 -c "import dynamicemb" 2>/dev/null; then
     echo "  -> dynamicemb already installed, skipping."
 else
@@ -48,9 +62,9 @@ else
     echo "  -> dynamicemb installed successfully."
 fi
 
-# ── Step 2: 编译安装 hstu_cuda_ops ────────────────────────────────────────────
+# ── Step 3: 编译安装 hstu_cuda_ops ────────────────────────────────────────────
 echo ""
-echo "[2/6] Building hstu_cuda_ops ..."
+echo "[3/7] Building hstu_cuda_ops ..."
 if python3 -c "import hstu_cuda_ops" 2>/dev/null; then
     echo "  -> hstu_cuda_ops already installed, skipping."
 else
@@ -124,9 +138,9 @@ PYEOF
     rm -f "$TEMP_SETUP"
 fi
 
-# ── Step 3: 应用代码补丁 ──────────────────────────────────────────────────────
+# ── Step 4: 应用代码补丁 ──────────────────────────────────────────────────────
 echo ""
-echo "[3/6] Applying code patches ..."
+echo "[4/7] Applying code patches ..."
 
 # 补丁 3a: hstu_attention.py — 顶层 hstu 导入改为懒加载
 PATCH_FILE="$HSTU_DIR/modules/hstu_attention.py"
@@ -187,9 +201,9 @@ p.write_text(text)
     echo "     Done."
 fi
 
-# ── Step 4: 配置 kernel_backend ───────────────────────────────────────────────
+# ── Step 5: 配置 kernel_backend & log/eval interval ──────────────────────────
 echo ""
-echo "[4/6] Checking gin config ..."
+echo "[5/7] Checking gin config ..."
 GIN_FILE="$HSTU_DIR/training/configs/movielen_retrieval.gin"
 if grep -q 'kernel_backend' "$GIN_FILE" 2>/dev/null; then
     echo "  -> kernel_backend already set in gin config, skipping."
@@ -200,9 +214,21 @@ else
     echo "     Done."
 fi
 
-# ── Step 5: 数据准备 ──────────────────────────────────────────────────────────
+# 降低 log_interval 和 eval_interval (ml-1m 仅 ~47 steps/epoch, 默认 100 导致无输出)
+if grep -q 'TrainerArgs.log_interval = 100' "$GIN_FILE" 2>/dev/null; then
+    echo "  -> Adjusting log_interval from 100 to 10 ..."
+    sed -i 's/TrainerArgs.log_interval = 100/TrainerArgs.log_interval = 10/' "$GIN_FILE"
+    echo "     Done."
+fi
+if grep -q 'TrainerArgs.eval_interval = 100' "$GIN_FILE" 2>/dev/null; then
+    echo "  -> Adjusting eval_interval from 100 to 20 ..."
+    sed -i 's/TrainerArgs.eval_interval = 100/TrainerArgs.eval_interval = 20/' "$GIN_FILE"
+    echo "     Done."
+fi
+
+# ── Step 6: 数据准备 ──────────────────────────────────────────────────────────
 echo ""
-echo "[5/6] Preparing data ..."
+echo "[6/7] Preparing data ..."
 
 # 创建符号链接
 if [ -L "$HSTU_DIR/tmp_data" ] || [ -d "$HSTU_DIR/tmp_data" ]; then
@@ -219,13 +245,25 @@ else
     echo "  -> Preprocessing MovieLens-1M dataset ..."
     cd "$COMMONS"
     mkdir -p ./tmp_data
+
+    # 检测并修复损坏的 zip 文件 (urlretrieve 可能产生不完整文件)
+    ZIP_FILE="./tmp_data/movielens1m.zip"
+    if [ -f "$ZIP_FILE" ]; then
+        if ! python3 -c "import zipfile; zipfile.ZipFile('$ZIP_FILE')" 2>/dev/null; then
+            echo "  -> Corrupted zip detected, re-downloading ..."
+            rm -f "$ZIP_FILE"
+            curl -L -o "$ZIP_FILE" "http://files.grouplens.org/datasets/movielens/ml-1m.zip"
+            echo "  -> Re-downloaded."
+        fi
+    fi
+
     python3 ./hstu_data_preprocessor.py --dataset_name ml-1m
     echo "  -> Dataset preprocessed."
 fi
 
-# ── Step 6: 启动训练 ──────────────────────────────────────────────────────────
+# ── Step 7: 启动训练 ──────────────────────────────────────────────────────────
 echo ""
-echo "[6/6] Launching training ..."
+echo "[7/7] Launching training ..."
 echo ""
 echo "============================================"
 echo "  All setup complete! Starting training ..."

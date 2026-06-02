@@ -1,7 +1,7 @@
 TrainerArgs.train_batch_size = 128
 TrainerArgs.eval_batch_size = 128
-TrainerArgs.eval_interval = 100
-TrainerArgs.log_interval = 100
+TrainerArgs.eval_interval = 20
+TrainerArgs.log_interval = 10
 TrainerArgs.ckpt_save_interval = -1
 TrainerArgs.seed = 1234
 
