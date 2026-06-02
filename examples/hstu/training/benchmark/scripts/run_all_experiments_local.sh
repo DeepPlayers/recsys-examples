@@ -1,37 +1,27 @@
 #!/bin/bash
 # ============================================================================
-# Batch Run All Experiments Locally (single node, unified dispatcher)
-#
-# Loops over the supplied experiment list and runs each entry via
-# run_single_experiment_local.sh. All entries must belong to the same
-# benchmark type.
-#
+# Batch Run All Experiments (Single Node)
+# 
 # Usage: ./training/benchmark/scripts/run_all_experiments_local.sh --exp-file=<file> [options]
-#
+# 
 # Environment Variables:
 #   HSTU_ROOT            Path to examples/hstu directory (optional, defaults to pwd)
-#
+# 
 # Options:
-#   --benchmark-type=TYPE  e2e | hstu-layer | hstu-attn-kernel (default: e2e)
-#   --exp-file=FILE      Experiment list file (required).
-#                        Defaults per benchmark type:
-#                          e2e              -> training/benchmark/experiments.txt
-#                          hstu-layer       -> training/benchmark/layer_experiments.txt
-#                          hstu-attn-kernel -> training/benchmark/kernel_experiments.txt
-#   --hstu-root=PATH     Specify examples/hstu directory path
+#   --exp-file=FILE      Experiment list file (required, format: exp_name,gin_options)
+#   --hstu-root=PATH     Specify examples/hstu directory path (overrides env var and pwd)
 #   --results-dir=PATH   Output directory (default: training/benchmark/results)
-#   --nproc=N            Number of processes/GPUs for e2e (default: 8, ignored otherwise)
-#   --nsys               Enable nsys profile sampling (e2e + hstu-layer)
+#   --nproc=N            Number of processes/GPUs (default: 8)
+#   --nsys               Enable nsys profile sampling (traces all processes)
 #   --dry-run            Print commands only, do not execute
-#   --help,-h            Show help information
-#
-# Experiment List File Format (all types):
+#   --help               Show help information
+# 
+# Experiment List File Format:
 #   # Comment lines start with #
-#   exp_name,<args>
-# Where <args> is:
-#   - e2e              : gin options passed to generate_gin_config.py
-#   - hstu-layer       : CLI args for hstu_layer_benchmark.py run
-#   - hstu-attn-kernel : CLI args for hstu_attn_kernel_benchmark.py
+#   exp_name,generate_gin_config_options
+#   exp0_baseline,
+#   exp1_cutlass,--kernel_backend cutlass
+#   exp4_caching,--kernel_backend cutlass --recompute_layernorm --balanced_shuffler --caching
 # 
 # Notes:
 #   - Executes all experiments in the list sequentially
@@ -60,7 +50,6 @@
 set -e
 
 # Default parameters
-BENCHMARK_TYPE="e2e"
 NPROC=8
 EXP_FILE=""
 ENABLE_NSYS=0
@@ -71,14 +60,6 @@ CUSTOM_RESULTS_DIR=""
 # Parse command line arguments (support both --arg value and --arg=value)
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --benchmark-type=*)
-            BENCHMARK_TYPE="${1#*=}"
-            shift
-            ;;
-        --benchmark-type)
-            BENCHMARK_TYPE="$2"
-            shift 2
-            ;;
         --exp-file=*)
             EXP_FILE="${1#*=}"
             shift
@@ -174,29 +155,14 @@ fi
 
 # Create timestamped batch experiment directory
 BATCH_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-case "${BENCHMARK_TYPE}" in
-    e2e)              BATCH_PREFIX="e2e" ;;
-    hstu-layer)       BATCH_PREFIX="hstu_layer" ;;
-    hstu-attn-kernel) BATCH_PREFIX="hstu_kernel" ;;
-    *)                BATCH_PREFIX="${BENCHMARK_TYPE//-/_}" ;;
-esac
-BATCH_OUTPUT_DIR="${RESULTS_BASE}/${BATCH_PREFIX}_${BATCH_TIMESTAMP}"
+BATCH_OUTPUT_DIR="${RESULTS_BASE}/${BATCH_TIMESTAMP}"
 
-case "$BENCHMARK_TYPE" in
-    e2e|hstu-layer|hstu-attn-kernel) ;;
-    *)
-        echo "❌ Error: Unknown --benchmark-type: ${BENCHMARK_TYPE} (supported: e2e, hstu-layer, hstu-attn-kernel)"
-        exit 1
-        ;;
-esac
-
-# Default experiment list file per benchmark type
+# Check experiment list file
 if [ -z "$EXP_FILE" ]; then
-    case "$BENCHMARK_TYPE" in
-        e2e)              EXP_FILE="training/benchmark/experiments.txt" ;;
-        hstu-layer)       EXP_FILE="training/benchmark/layer_experiments.txt" ;;
-        hstu-attn-kernel) EXP_FILE="training/benchmark/kernel_experiments.txt" ;;
-    esac
+    echo "⚠️  Missing experiment list file (--exp-file=<file>)"
+    echo ""
+    head -48 "$0" | tail -46
+    exit 0
 fi
 
 # If relative path, make it relative to examples/hstu
@@ -250,13 +216,11 @@ echo "🚀 HSTU Benchmark Suite (Single Node)"
 echo "=========================================="
 echo ""
 echo "Configuration:"
-echo "  - Benchmark type:   ${BENCHMARK_TYPE}"
-if [ "$BENCHMARK_TYPE" = "e2e" ]; then
-    echo "  - GPUs/Processes:   ${NPROC}"
-    echo "  - NSYS Profiling:   $([ ${ENABLE_NSYS} -eq 1 ] && echo 'ENABLED' || echo 'DISABLED')"
-fi
+echo "  - GPUs/Processes:   ${NPROC}"
 echo "  - Experiment file:  ${EXP_FILE}"
 echo "  - Batch timestamp:  ${BATCH_TIMESTAMP}"
+echo ""
+echo "NSYS Profiling: $([ ${ENABLE_NSYS} -eq 1 ] && echo 'ENABLED (all processes)' || echo 'DISABLED')"
 echo ""
 if [ ${DRY_RUN} -eq 1 ]; then
     echo -e "${YELLOW}⚠️  DRY RUN MODE - Commands will be printed but not executed${NC}"
@@ -284,19 +248,25 @@ if [ ${DRY_RUN} -eq 1 ]; then
         gin_opts="${GIN_OPTIONS[$i]}"
         exp_num=$((i + 1))
         EXP_OUTPUT_DIR="${BATCH_OUTPUT_DIR}/${exp}"
-
+        
         echo -e "[${exp_num}/${#EXP_NAMES[@]}] ${YELLOW}${exp}${NC}"
-        echo "  Args:       ${gin_opts:-'(defaults)'}"
+        echo "  Options:    ${gin_opts:-'(defaults)'}"
         echo "  Output dir: ${EXP_OUTPUT_DIR}"
         echo "  Command:"
-        NSYS_FLAG=""
-        [ ${ENABLE_NSYS} -eq 1 ] && NSYS_FLAG="--nsys"
-        echo "    ${SCRIPT_DIR}/run_single_experiment_local.sh ${exp} \\"
-        echo "        --benchmark-type=${BENCHMARK_TYPE} \\"
-        echo "        --exp-args=\"${gin_opts}\" \\"
-        echo "        --nproc=${NPROC} \\"
-        echo "        --output-dir=${EXP_OUTPUT_DIR} \\"
-        echo "        --hstu-root=${HSTU_ROOT} ${NSYS_FLAG}"
+        if [ ${ENABLE_NSYS} -eq 1 ]; then
+            echo "    ${SCRIPT_DIR}/run_single_experiment_local.sh ${exp} \\"
+            echo "        ${gin_opts} \\"
+            echo "        --nproc=${NPROC} \\"
+            echo "        --output-dir=${EXP_OUTPUT_DIR} \\"
+            echo "        --hstu-root=${HSTU_ROOT} \\"
+            echo "        --nsys"
+        else
+            echo "    ${SCRIPT_DIR}/run_single_experiment_local.sh ${exp} \\"
+            echo "        ${gin_opts} \\"
+            echo "        --nproc=${NPROC} \\"
+            echo "        --output-dir=${EXP_OUTPUT_DIR} \\"
+            echo "        --hstu-root=${HSTU_ROOT}"
+        fi
         echo ""
     done
     
@@ -366,20 +336,13 @@ for i in "${!EXP_NAMES[@]}"; do
     EXP_START_DATE=$(date)
     
     # Build run command, pass output directory and HSTU_ROOT
-    # Note: quote exp-args to preserve spaces when the benchmark-specific args
-    # contain multi-word options.
-    RUN_ARGS=("${SCRIPT_DIR}/run_single_experiment_local.sh" "${exp}")
-    RUN_ARGS+=(--benchmark-type="${BENCHMARK_TYPE}")
-    RUN_ARGS+=(--exp-args="${gin_opts}")
-    RUN_ARGS+=(--nproc="${NPROC}")
-    RUN_ARGS+=(--output-dir="${EXP_OUTPUT_DIR}")
-    RUN_ARGS+=(--hstu-root="${HSTU_ROOT}")
+    RUN_CMD="${SCRIPT_DIR}/run_single_experiment_local.sh ${exp} ${gin_opts} --nproc=${NPROC} --output-dir=${EXP_OUTPUT_DIR} --hstu-root=${HSTU_ROOT}"
     if [ ${ENABLE_NSYS} -eq 1 ]; then
-        RUN_ARGS+=(--nsys)
+        RUN_CMD="${RUN_CMD} --nsys"
     fi
-
+    
     # Run experiment
-    if "${RUN_ARGS[@]}"; then
+    if ${RUN_CMD}; then
         EXP_END=$(date +%s)
         EXP_DURATION=$((EXP_END - EXP_START))
         echo ""

@@ -72,7 +72,9 @@ def create_hstu_config(
             f"Kernel backend {network_args.kernel_backend} is not supported."
         )
     layer_type = None
-    if tensor_model_parallel_args.tensor_model_parallel_size == 1:
+    if kernel_backend == KernelBackend.PYTORCH:
+        layer_type = HSTULayerType.DEBUG
+    elif tensor_model_parallel_args.tensor_model_parallel_size == 1:
         layer_type = HSTULayerType.FUSED
     else:
         layer_type = HSTULayerType.NATIVE
@@ -288,7 +290,6 @@ def create_dynamic_optitons_dict(
                 bucket_capacity=128,
                 training=training,
                 caching=embedding_args.caching,
-                dist_type=embedding_args.dist_type,
             )
     return dynamic_options_dict
 

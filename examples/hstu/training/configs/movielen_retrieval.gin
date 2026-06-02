@@ -5,7 +5,7 @@ TrainerArgs.log_interval = 100
 TrainerArgs.ckpt_save_interval = -1
 TrainerArgs.seed = 1234
 
-DatasetArgs.dataset_name = 'ml-20m'
+DatasetArgs.dataset_name = 'ml-1m'
 DatasetArgs.max_history_seqlen = 200
 DatasetArgs.shuffle = True
 
@@ -17,6 +17,7 @@ NetworkArgs.kv_channels = 64
 NetworkArgs.hidden_dropout = 0
 NetworkArgs.norm_epsilon = 1e-6
 NetworkArgs.is_causal = True
+NetworkArgs.kernel_backend = "pytorch"
 
 OptimizerArgs.optimizer_str = 'adam'
 OptimizerArgs.learning_rate = 1e-3

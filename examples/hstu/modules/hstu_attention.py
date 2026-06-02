@@ -18,7 +18,6 @@ from typing import Optional, Union
 import torch
 from commons.utils.nvtx_op import output_nvtx_hook
 from configs import KernelBackend
-from hstu import hstu_attn_varlen_func
 
 
 class HSTUAttention(torch.nn.Module):
@@ -292,6 +291,8 @@ class FusedHSTUAttention(HSTUAttention):
             )
         if scaling_seqlen == -1:
             scaling_seqlen = max_seqlen
+
+        from hstu import hstu_attn_varlen_func
 
         return hstu_attn_varlen_func(
             tq.view(-1, self.num_heads, self.attention_dim),

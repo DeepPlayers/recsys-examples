@@ -37,7 +37,10 @@ this_dir = os.path.dirname(os.path.abspath(__file__))
 root_path: Path = Path(__file__).resolve().parent
 
 cmd = ["git", "rev-parse", "HEAD"]
-sha = subprocess.check_output(cmd, cwd=str(root_path)).decode("ascii").strip()
+try:
+    sha = subprocess.check_output(cmd, cwd=str(root_path)).decode("ascii").strip()
+except subprocess.CalledProcessError:
+    sha = "unknown"
 
 PACKAGE_NAME = "hstu_attn"
 

@@ -124,7 +124,7 @@ __global__ void table_lookup_kernel(
     Bucket bucket = table[bucket_id];
     Iter iter = Iter(hashcode % table.bucket_capacity());
     int64_t step = 0;
-    auto probe_res = bucket.probe<ProbingGroupSize>(key, iter, step);
+    auto probe_res = bucket.template probe<ProbingGroupSize>(key, iter, step);
     bool found = probe_res == Bucket::ProbeResult::Existed;
     IndexType index = -1;
     if (found) {
@@ -589,7 +589,7 @@ __global__ void table_erase_kernel(
     Bucket bucket = table[bucket_id];
     Iter iter = Iter(hashcode % table.bucket_capacity());
     int64_t step = 0;
-    auto probe_res = bucket.probe<ProbingGroupSize>(key, iter, step);
+    auto probe_res = bucket.template probe<ProbingGroupSize>(key, iter, step);
     bool found = probe_res == Bucket::ProbeResult::Existed;
     IndexType index = -1;
     if (found) {
@@ -641,8 +641,8 @@ __global__ void table_export_batch_kernel(
     const IndexType index = i - table_begin;
 
     bool valid = Bucket::is_valid(key);
-    bool match = valid and pred.template operator()(score);
-    // bool match = valid and pred(score);
+    // bool match = valid and pred.template operator()(score);
+    bool match = valid and pred(score);
     uint32_t vote = g.ballot(match);
     int group_cnt = __popc(vote);
     CounterType group_offset = 0;

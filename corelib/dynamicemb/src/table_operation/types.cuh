@@ -31,7 +31,13 @@ All rights reserved. # SPDX-License-Identifier: Apache-2.0
 
 #include "score.cuh"
 
+// On PPU (HGGC) SDK, __cvta_generic_to_shared is already declared with C++
+// linkage in hgrt/hggc_device_functions.h (force-included via command line).
+// Adding extern "C" here would cause a linkage conflict.
+// On standard NVIDIA CUDA, the manual extern "C" declaration is still needed.
+#if !defined(___HGGC_DEVICE_FUNCTIONS_H___)
 extern "C" __device__ size_t __cvta_generic_to_shared(const void *);
+#endif
 
 namespace dyn_emb {
 
