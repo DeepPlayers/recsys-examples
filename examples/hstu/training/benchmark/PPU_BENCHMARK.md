@@ -1,26 +1,26 @@
-# HSTU E2E Training Benchmark — PPU-ZW810E Results
+# HSTU E2E 训练性能基准测试 — PPU-ZW810E 结果
 
-## Hardware
+## 硬件环境
 
-- **GPU**: 4× PPU-ZW810E (98 GB HBM each)
-- **Node**: Single node, 4 GPUs
-- **Driver**: PPU-SMI 1.22, HGGC 13.0
-- **SM**: 8.0 (Ampere-class)
+- **GPU**: 4× PPU-ZW810E（98 GB HBM / 卡）
+- **节点**: 单节点 4 卡
+- **驱动**: PPU-SMI 1.22, HGGC 13.0
+- **SM**: 8.0（Ampere 级）
 
-## Software
+## 软件环境
 
 - **PyTorch**: 2.9.0+ali.10.ppu2.0.0.cu129
-- **FBGEMM HSTU**: compiled from `jiayus-nvidia/FBGEMM` fork (sm 8.0, Ampere kernel path)
-- **hstu_attn**: compiled from `corelib/hstu` (CUTLASS attention kernels)
-- **DynamicEmb**: local build
+- **FBGEMM HSTU**: 从 `jiayus-nvidia/FBGEMM` fork 编译（sm 8.0, Ampere kernel）
+- **hstu_attn**: 从 `corelib/hstu` 编译（CUTLASS attention kernel）
+- **DynamicEmb**: 本地编译
 - **flash-attn**: 2.7.4.post1+ppu2.0.0.oe
 
-## Run Info
+## 运行信息
 
 - **Run ID**: `e2e_20260603_194209`
-- **Date**: 2026-06-03
-- **Experiment**: `exp2_cutlass` (Option A — single experiment)
-- **Command**:
+- **日期**: 2026-06-03
+- **实验**: `exp2_cutlass`（Option A — 单实验运行）
+- **启动命令**:
   ```bash
   ./training/benchmark/scripts/run_single_experiment_local.sh exp2_cutlass \
       --exp-args="--balanced_shuffler --kernel_backend cutlass --caching --ratio 0.1 \
@@ -28,52 +28,52 @@
       --nproc=4
   ```
 
-## Configuration
+## 模型与数据配置
 
-| Parameter | Value |
-|-----------|-------|
+| 参数 | 值 |
+|------|-----|
 | Hidden size | 1024 |
-| Num HSTU layers | 8 |
-| Num attention heads | 4 |
+| HSTU 层数 | 8 |
+| 注意力头数 | 4 |
 | Head dimension | 256 |
 | Item embedding dim | 128 |
 | Contextual embedding dim | 128 |
 | Prediction head | [512, 8] × 8 tasks |
-| Optimizer | Adam (lr=1e-3) |
-| Batch size per GPU | 32 |
-| Max sequence length | 4096 |
-| Sequence length distribution | Zipf (α=1.2), jagged |
-| Key value distribution | Zipf (α=1.05) |
-| Training iterations | 1000 |
-| Log interval | 20 |
+| 优化器 | Adam (lr=1e-3) |
+| 每卡 batch size | 32 |
+| 最大序列长度 | 4096 |
+| 序列长度分布 | Zipf (α=1.2), jagged |
+| Key 值分布 | Zipf (α=1.05) |
+| 训练迭代数 | 1000 |
+| 日志间隔 | 20 iter |
 
-### Enabled optimizations
+### 已启用的优化
 
-| Optimization | Status |
-|-------------|--------|
-| Workload-Balanced Shuffler | ✅ Enabled |
-| CUTLASS Attention | ✅ Enabled |
-| DynamicEmb Caching | ✅ Enabled (ratio 0.1, LRU eviction) |
-| Hash-RoundRobin Sharding | ❌ Disabled |
-| Prefetch Pipeline | ❌ Disabled |
+| 优化项 | 状态 |
+|--------|------|
+| 负载均衡 Shuffler | ✅ 已启用 |
+| CUTLASS Attention | ✅ 已启用 |
+| DynamicEmb Caching | ✅ 已启用（ratio 0.1, LRU 淘汰） |
+| Hash-RoundRobin 分片 | ❌ 未启用 |
+| Prefetch Pipeline | ❌ 未启用 |
 
-## Results
+## 性能结果
 
-### Summary (iter 199–999, post-warmup)
+### 汇总指标（iter 199–999，去除 warmup）
 
-| Metric | Value |
-|--------|------:|
-| **Avg TFLOPS/GPU** | **140.1** |
-| **Avg MFU (%)** | **17.82** |
-| **Peak TFLOPS/GPU** | **140.2** |
-| **Peak MFU (%)** | **17.82** |
-| Avg step time (ms) | 21,548 |
-| Tokens per step | 2,244,415 |
+| 指标 | 值 |
+|------|---:|
+| **平均 TFLOPS/GPU** | **140.1** |
+| **平均 MFU (%)** | **17.82** |
+| **峰值 TFLOPS/GPU** | **140.2** |
+| **峰值 MFU (%)** | **17.82** |
+| 平均 step 耗时 (ms) | 21,548 |
+| 每 step tokens 数 | 2,244,415 |
 
-### Full iteration log
+### 完整迭代日志
 
-| Iter | Elapsed (ms) | TFLOPS/GPU | MFU (%) | Loss |
-|-----:|------------:|----------:|-------:|-----:|
+| Iter | 耗时 (ms) | TFLOPS/GPU | MFU (%) | Loss |
+|-----:|----------:|----------:|-------:|-----:|
 | 19 | 30,694 | 98.38 | 12.51 | 5.546 |
 | 39 | 21,547 | 140.13 | 17.82 | 5.545 |
 | 59 | 21,548 | 140.13 | 17.82 | 5.545 |
@@ -125,31 +125,31 @@
 | 979 | 21,546 | 140.14 | 17.82 | 3.287 |
 | 999 | 21,546 | 140.14 | 17.82 | 3.318 |
 
-### Observations
+### 观察分析
 
-1. **Stable throughput**: Post-warmup throughput is extremely stable at 140.1–140.2 TFLOPS/GPU with less than 0.1% variance across all 41 logged intervals (iter 199–999).
+1. **吞吐极其稳定**：去除 warmup 后，41 个日志区间的吞吐在 140.07–140.16 TFLOPS/GPU 之间，波动小于 0.1%。
 
-2. **Warmup**: Iter 19 (warmup) is 98.4 TFLOPS due to CUDA kernel JIT compilation and cache cold-start. From iter 39 onward, performance stabilizes immediately.
+2. **Warmup 阶段**：Iter 19 仅 98.4 TFLOPS，原因是 CUDA kernel JIT 编译和缓存冷启动。从 iter 39 起性能立即稳定。
 
-3. **Caching overhead**: DynamicEmb caching (HBM cache + host backing) is enabled with 10% cache ratio. The HBM cache stores ~29.3 GB per GPU (item + user_id tables), with full backing in host memory (~36.6 GB).
+3. **Caching 开销**：DynamicEmb caching 已启用（HBM cache + host backing），10% cache ratio。每卡 HBM cache 占用约 29.3 GB（item + user_id 表），host 端全量备份约 36.6 GB。
 
-4. **Memory usage**: Free GPU memory after model init is 65,672 MB (of 98 GB), indicating ~32 GB used for model parameters, optimizer states, and HBM cache.
+4. **显存占用**：模型初始化后剩余 GPU 显存 65,672 MB（总共 98 GB），即约 32 GB 用于模型参数、优化器状态和 HBM cache。
 
-## Reproducing
+## 复现方法
 
 ```bash
 cd recsys-examples/examples/hstu
 
-# Option A: single experiment
+# Option A: 运行单个实验
 ./training/benchmark/scripts/run_single_experiment_local.sh exp2_cutlass \
     --exp-args="--balanced_shuffler --kernel_backend cutlass --caching --ratio 0.1 \
                 --value_dist zipf --value_dist_alpha 1.05" \
     --nproc=4
 ```
 
-### Prerequisites
+### 前置依赖
 
-- FBGEMM `hstu` package compiled from `jiayus-nvidia/FBGEMM` fork for sm 8.0
-- CUTLASS attention kernels (`hstu_attn`) compiled from `corelib/hstu`
-- DynamicEmb compiled and installed
-- See `docker/Dockerfile` for full build instructions
+- FBGEMM `hstu` 包：从 `jiayus-nvidia/FBGEMM` fork 编译，目标架构 sm 8.0
+- CUTLASS attention kernel（`hstu_attn`）：从 `corelib/hstu` 编译
+- DynamicEmb：编译安装
+- 完整构建步骤参见 `docker/Dockerfile`
