@@ -53,8 +53,11 @@ CLEAN_ONLY=0
 VERIFY_ONLY=0
 
 # 获取脚本所在目录
+# 脚本位置: examples/hstu/training/benchmark/scripts/
+# 需要向上 5 级到仓库根目录:
+#   scripts -> benchmark -> training -> hstu -> examples -> repo_root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../../../../.." && pwd)"
 
 # ============================================================================
 # 函数定义
@@ -352,6 +355,7 @@ feature_flags = [
     "-DHSTU_DISABLE_DRAB",
     "-DHSTU_DISABLE_FP16",
     "-DHSTU_DISABLE_DETERMINISTIC",
+    "-DHSTU_DISABLE_86OR89",
     "-DHSTU_ARBITRARY_NFUNC=1",
 ]
 
