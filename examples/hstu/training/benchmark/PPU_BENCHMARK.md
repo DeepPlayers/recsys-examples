@@ -277,7 +277,31 @@ cd recsys-examples/examples/hstu
 
 ### 前置依赖
 
-- FBGEMM `hstu` 包：从 `jiayus-nvidia/FBGEMM` fork 编译，目标架构 sm 8.0
-- CUTLASS attention kernel（`hstu_attn`）：从 `corelib/hstu` 编译
-- DynamicEmb：编译安装
+#### 1. CUTLASS Attention Kernel 编译（必需）
+
+在 PPU-ZW810E 环境下运行 CUTLASS benchmark 前，需要先编译两个关键组件：
+
+- **`hstu_attn`**：CUTLASS attention kernel 核心库（从 `corelib/hstu` 编译）
+- **`hstu`**：FBGEMM 接口层（从 `jiayus-nvidia/FBGEMM` fork 编译，目标架构 sm 8.0）
+
+**详细编译步骤请参考：[`BUILD_CUTLASS_KERNELS.md`](BUILD_CUTLASS_KERNELS.md)**
+
+**快速编译（推荐）：**
+
+```bash
+# 使用自动化脚本（约 15-20 分钟）
+./training/benchmark/scripts/build_cutlass_kernels.sh --max-jobs=39
+
+# 验证安装
+./training/benchmark/scripts/build_cutlass_kernels.sh --verify-only
+```
+
+#### 2. 其他依赖
+
+- **DynamicEmb**：动态嵌入表库，编译安装
+- **flash-attn**：Flash Attention 库（PPU 预编译版本）
 - 完整构建步骤参见 `docker/Dockerfile`
+
+#### 3. 常见问题
+
+如果遇到 `torch.ops.fbgemm.hstu_varlen_fwd_80` 未注册的错误，说明 CUTLASS kernel 未正确编译。请参考 [`BUILD_CUTLASS_KERNELS.md`](BUILD_CUTLASS_KERNELS.md) 中的故障排查章节。
