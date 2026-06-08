@@ -1,0 +1,381 @@
+Mon Jun  8 17:58:37 2026
++-------------------------------------------------------------------------------+
+| PPU-SMI 1.22          Driver Version: 1.4.1-816bc0  HGGC Version: 13.0        |
++---------------------------------+----------------------+----------------------+
+| PPU  Name        Persistence M. | Bus-Id               | Volatile Uncorr. ECC |
+| Fan  Temp  Perf   Pwr:Usage/Cap | Memory-Usage         | PPU-Util  Compute M. |
+|                                 |                      |               MIG M. |
++=================================+======================+======================+
+| 0  PPU-ZW810E        N/A        | 00000000:05:00.0     |                    0 |
+| N/A  32C   N/A       69W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 1  PPU-ZW810E        N/A        | 00000000:06:00.0     |                    0 |
+| N/A  30C   N/A       67W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 2  PPU-ZW810E        N/A        | 00000000:0B:00.0     |                    0 |
+| N/A  29C   N/A       72W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 3  PPU-ZW810E        N/A        | 00000000:0C:00.0     |                    0 |
+| N/A  29C   N/A       73W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+
++-------------------------------------------------------------------------------+
+| Processes:                                                                    |
+| PPU    GI   CI   PID      Type  Process name                       PPU Memory |
+|        ID   ID                                                     Usage      |
++===============================================================================+
+| No running processes found                                                    |
++-------------------------------------------------------------------------------+
+W0608 17:58:38.842000 87690 site-packages/torch/distributed/run.py:803] 
+W0608 17:58:38.842000 87690 site-packages/torch/distributed/run.py:803] *****************************************
+W0608 17:58:38.842000 87690 site-packages/torch/distributed/run.py:803] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0608 17:58:38.842000 87690 site-packages/torch/distributed/run.py:803] *****************************************
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+W0608 17:58:45.139000 87690 site-packages/torch/distributed/elastic/agent/server/api.py:725] Received 15 death signal, shutting down workers
+W0608 17:58:45.139000 87690 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 87740 closing signal SIGTERM
+W0608 17:58:45.140000 87690 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 87741 closing signal SIGTERM
+W0608 17:58:45.140000 87690 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 87742 closing signal SIGTERM
+W0608 17:58:45.140000 87690 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 87743 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/opt/ac2/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.9.0+ali.10.ppu2.0.0.cu129', 'console_scripts', 'torchrun')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 284, in launch_agent
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 717, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 881, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 85, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 87690 got signal: 15

@@ -1,0 +1,877 @@
+Mon Jun  8 16:33:07 2026
++-------------------------------------------------------------------------------+
+| PPU-SMI 1.22          Driver Version: 1.4.1-816bc0  HGGC Version: 13.0        |
++---------------------------------+----------------------+----------------------+
+| PPU  Name        Persistence M. | Bus-Id               | Volatile Uncorr. ECC |
+| Fan  Temp  Perf   Pwr:Usage/Cap | Memory-Usage         | PPU-Util  Compute M. |
+|                                 |                      |               MIG M. |
++=================================+======================+======================+
+| 0  PPU-ZW810E        N/A        | 00000000:05:00.0     |                    0 |
+| N/A  31C   N/A       69W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 1  PPU-ZW810E        N/A        | 00000000:06:00.0     |                    0 |
+| N/A  29C   N/A       67W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 2  PPU-ZW810E        N/A        | 00000000:0B:00.0     |                    0 |
+| N/A  28C   N/A       72W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 3  PPU-ZW810E        N/A        | 00000000:0C:00.0     |                    0 |
+| N/A  28C   N/A       73W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+
++-------------------------------------------------------------------------------+
+| Processes:                                                                    |
+| PPU    GI   CI   PID      Type  Process name                       PPU Memory |
+|        ID   ID                                                     Usage      |
++===============================================================================+
+| No running processes found                                                    |
++-------------------------------------------------------------------------------+
+W0608 16:33:08.392000 15059 site-packages/torch/distributed/run.py:803] 
+W0608 16:33:08.392000 15059 site-packages/torch/distributed/run.py:803] *****************************************
+W0608 16:33:08.392000 15059 site-packages/torch/distributed/run.py:803] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0608 16:33:08.392000 15059 site-packages/torch/distributed/run.py:803] *****************************************
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3[Gloo] Rank 
+3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3[Gloo] Rank 
+2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank [Gloo] Rank 01 is connected to  is connected to 33 peer ranks.  peer ranks. Expected number of connected peer ranks is : Expected number of connected peer ranks is : 33
+
+[Gloo] Rank [Gloo] Rank 3 is connected to 32 peer ranks.  is connected to Expected number of connected peer ranks is : 33 peer ranks. 
+Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[06/08/26 16:33:21] INFO     distributed env initialization done. Free cuda memory: 97137.11 MB                                                                                                                                                 
+[rank2]:W0608 16:33:21.506000 15111 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank0]:W0608 16:33:21.510000 15109 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank3]:W0608 16:33:21.511000 15112 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank1]:W0608 16:33:21.530000 15110 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:0    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:3    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:2    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:1    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+[06/08/26 16:34:19] INFO     model initialization done, start training. Free cuda memory: 65671.85 MB                                                                                                                                           
+                    INFO     fill_tables done for ['item', 'user_id']                                                                                                                                                                           
+[2026-06-08 16:34:20:430944][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=3, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 16:34:20:435138][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=2, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 16:34:20:442091][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=0, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 16:34:20:443103][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=1, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 16:34:22:471495][ALINPU INFO]: [offline_cache.hpp:299]Saved_file: /usr/local/PPU_SDK/rtccache/PPU0010/2.0.0-715aa1_569839143_gemm_ktype0_aiu1_mtype1_dtypeBF16xBF16xFP32xBF16xBF16_tile32x128x32x32x64x2_layout0x1x0x0_align1x1x8x8_splitk2_fusion5_prefetch0_fp32tc0_ptrhost1_schedule0.bin
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 203, in <module>
+[rank1]:     main()
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 191, in main
+[rank1]:     train_with_pipeline(
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/training/trainer/training.py", line 204, in train_with_pipeline
+[rank1]:     ) = pipeline.progress(batched_iterator)
+[rank1]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/commons/pipeline/train_pipeline.py", line 1057, in progress
+[rank1]:     losses, output = self._model(batch)
+[rank1]:                      ^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torchrec/distributed/model_parallel.py", line 333, in forward
+[rank1]:     return self._dmp_wrapped_module(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/distributed/data_parallel_base.py", line 22, in forward
+[rank1]:     return self.module(*inputs, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/transformer/module.py", line 493, in forward
+[rank1]:     outputs = self.module(*inputs, **kwargs)
+[rank1]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 154, in forward
+[rank1]:     ) = self.get_logit_and_labels(batch)
+[rank1]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 129, in get_logit_and_labels
+[rank1]:     hidden_states_jagged, seqlen_after_preprocessor = self._hstu_block(
+[rank1]:                                                       ^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank1]:     output = module_or_func(*args, **kwargs)
+[rank1]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/modules/hstu_block.py", line 85, in forward
+[rank1]:     jd = hstu_layer(jd)
+[rank1]:          ^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank1]:     output = module_or_func(*args, **kwargs)
+[rank1]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/modules/fused_hstu_layer.py", line 128, in forward
+[rank1]:     output = fused_hstu_op(
+[rank1]:              ^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 1026, in fused_hstu_op
+[rank1]:     out = FusedHSTULayerFunction.apply(
+[rank1]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/autograd/function.py", line 581, in apply
+[rank1]:     return super().apply(*args, **kwargs)  # type: ignore[misc]
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 459, in forward
+[rank1]:     attn_output = _hstu_attn_cutlass_fwd(
+[rank1]:                   ^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 294, in _hstu_attn_cutlass_fwd
+[rank1]:     jagged_attn_output, _ = torch.ops.fbgemm.hstu_varlen_fwd_80(
+[rank1]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/opt/ac2/lib/python3.12/site-packages/torch/_ops.py", line 1365, in __getattr__
+[rank1]:     raise AttributeError(
+[rank1]: AttributeError: '_OpNamespace' 'fbgemm' object has no attribute 'hstu_varlen_fwd_80'
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 203, in <module>
+[rank3]:     main()
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 191, in main
+[rank3]:     train_with_pipeline(
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/training/trainer/training.py", line 204, in train_with_pipeline
+[rank3]:     ) = pipeline.progress(batched_iterator)
+[rank3]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/commons/pipeline/train_pipeline.py", line 1057, in progress
+[rank3]:     losses, output = self._model(batch)
+[rank3]:                      ^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torchrec/distributed/model_parallel.py", line 333, in forward
+[rank3]:     return self._dmp_wrapped_module(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/distributed/data_parallel_base.py", line 22, in forward
+[rank3]:     return self.module(*inputs, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/transformer/module.py", line 493, in forward
+[rank3]:     outputs = self.module(*inputs, **kwargs)
+[rank3]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 154, in forward
+[rank3]:     ) = self.get_logit_and_labels(batch)
+[rank3]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 129, in get_logit_and_labels
+[rank3]:     hidden_states_jagged, seqlen_after_preprocessor = self._hstu_block(
+[rank3]:                                                       ^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank3]:     output = module_or_func(*args, **kwargs)
+[rank3]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/modules/hstu_block.py", line 85, in forward
+[rank3]:     jd = hstu_layer(jd)
+[rank3]:          ^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank3]:     output = module_or_func(*args, **kwargs)
+[rank3]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/modules/fused_hstu_layer.py", line 128, in forward
+[rank3]:     output = fused_hstu_op(
+[rank3]:              ^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 1026, in fused_hstu_op
+[rank3]:     out = FusedHSTULayerFunction.apply(
+[rank3]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/autograd/function.py", line 581, in apply
+[rank3]:     return super().apply(*args, **kwargs)  # type: ignore[misc]
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 459, in forward
+[rank3]:     attn_output = _hstu_attn_cutlass_fwd(
+[rank3]:                   ^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 294, in _hstu_attn_cutlass_fwd
+[rank3]:     jagged_attn_output, _ = torch.ops.fbgemm.hstu_varlen_fwd_80(
+[rank3]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/opt/ac2/lib/python3.12/site-packages/torch/_ops.py", line 1365, in __getattr__
+[rank3]:     raise AttributeError(
+[rank3]: AttributeError: '_OpNamespace' 'fbgemm' object has no attribute 'hstu_varlen_fwd_80'
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 203, in <module>
+[rank2]:     main()
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 191, in main
+[rank2]:     train_with_pipeline(
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/training/trainer/training.py", line 204, in train_with_pipeline
+[rank2]:     ) = pipeline.progress(batched_iterator)
+[rank2]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/commons/pipeline/train_pipeline.py", line 1057, in progress
+[rank2]:     losses, output = self._model(batch)
+[rank2]:                      ^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torchrec/distributed/model_parallel.py", line 333, in forward
+[rank2]:     return self._dmp_wrapped_module(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/distributed/data_parallel_base.py", line 22, in forward
+[rank2]:     return self.module(*inputs, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/transformer/module.py", line 493, in forward
+[rank2]:     outputs = self.module(*inputs, **kwargs)
+[rank2]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 154, in forward
+[rank2]:     ) = self.get_logit_and_labels(batch)
+[rank2]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 129, in get_logit_and_labels
+[rank2]:     hidden_states_jagged, seqlen_after_preprocessor = self._hstu_block(
+[rank2]:                                                       ^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank2]:     output = module_or_func(*args, **kwargs)
+[rank2]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/modules/hstu_block.py", line 85, in forward
+[rank2]:     jd = hstu_layer(jd)
+[rank2]:          ^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank2]:     output = module_or_func(*args, **kwargs)
+[rank2]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/modules/fused_hstu_layer.py", line 128, in forward
+[rank2]:     output = fused_hstu_op(
+[rank2]:              ^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 1026, in fused_hstu_op
+[rank2]:     out = FusedHSTULayerFunction.apply(
+[rank2]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/autograd/function.py", line 581, in apply
+[rank2]:     return super().apply(*args, **kwargs)  # type: ignore[misc]
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 459, in forward
+[rank2]:     attn_output = _hstu_attn_cutlass_fwd(
+[rank2]:                   ^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 294, in _hstu_attn_cutlass_fwd
+[rank2]:     jagged_attn_output, _ = torch.ops.fbgemm.hstu_varlen_fwd_80(
+[rank2]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/opt/ac2/lib/python3.12/site-packages/torch/_ops.py", line 1365, in __getattr__
+[rank2]:     raise AttributeError(
+[rank2]: AttributeError: '_OpNamespace' 'fbgemm' object has no attribute 'hstu_varlen_fwd_80'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 203, in <module>
+[rank0]:     main()
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/training/pretrain_gr_ranking.py", line 191, in main
+[rank0]:     train_with_pipeline(
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/training/trainer/training.py", line 204, in train_with_pipeline
+[rank0]:     ) = pipeline.progress(batched_iterator)
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/commons/pipeline/train_pipeline.py", line 1057, in progress
+[rank0]:     losses, output = self._model(batch)
+[rank0]:                      ^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torchrec/distributed/model_parallel.py", line 333, in forward
+[rank0]:     return self._dmp_wrapped_module(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/distributed/data_parallel_base.py", line 22, in forward
+[rank0]:     return self.module(*inputs, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/megatron/core/transformer/module.py", line 493, in forward
+[rank0]:     outputs = self.module(*inputs, **kwargs)
+[rank0]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 154, in forward
+[rank0]:     ) = self.get_logit_and_labels(batch)
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/model/ranking_gr.py", line 129, in get_logit_and_labels
+[rank0]:     hidden_states_jagged, seqlen_after_preprocessor = self._hstu_block(
+[rank0]:                                                       ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank0]:     output = module_or_func(*args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/modules/hstu_block.py", line 85, in forward
+[rank0]:     jd = hstu_layer(jd)
+[rank0]:          ^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/commons/utils/nvtx_op.py", line 174, in wrapper
+[rank0]:     output = module_or_func(*args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/modules/fused_hstu_layer.py", line 128, in forward
+[rank0]:     output = fused_hstu_op(
+[rank0]:              ^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 1026, in fused_hstu_op
+[rank0]:     out = FusedHSTULayerFunction.apply(
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/autograd/function.py", line 581, in apply
+[rank0]:     return super().apply(*args, **kwargs)  # type: ignore[misc]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 459, in forward
+[rank0]:     attn_output = _hstu_attn_cutlass_fwd(
+[rank0]:                   ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/workspace/recsys-examples/examples/hstu/ops/fused_hstu_op.py", line 294, in _hstu_attn_cutlass_fwd
+[rank0]:     jagged_attn_output, _ = torch.ops.fbgemm.hstu_varlen_fwd_80(
+[rank0]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/opt/ac2/lib/python3.12/site-packages/torch/_ops.py", line 1365, in __getattr__
+[rank0]:     raise AttributeError(
+[rank0]: AttributeError: '_OpNamespace' 'fbgemm' object has no attribute 'hstu_varlen_fwd_80'
+[rank1]:[W608 16:34:34.911432526 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W608 16:34:34.982431619 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank2]:[W608 16:34:34.982536961 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank3]:[W608 16:34:34.992073076 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+E0608 16:34:45.033000 15059 site-packages/torch/distributed/elastic/multiprocessing/api.py:882] failed (exitcode: 1) local_rank: 0 (pid: 15109) of binary: /opt/ac2/bin/python3
+Traceback (most recent call last):
+  File "/opt/ac2/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 293, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+training/pretrain_gr_ranking.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-06-08_16:34:45
+  host      : model-performance-4ppu-7bd6d74d45-2wfsr
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 15110)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2026-06-08_16:34:45
+  host      : model-performance-4ppu-7bd6d74d45-2wfsr
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 15111)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2026-06-08_16:34:45
+  host      : model-performance-4ppu-7bd6d74d45-2wfsr
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 15112)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-06-08_16:34:45
+  host      : model-performance-4ppu-7bd6d74d45-2wfsr
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 15109)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

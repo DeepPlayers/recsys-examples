@@ -1,0 +1,518 @@
+Mon Jun  8 17:36:32 2026
++-------------------------------------------------------------------------------+
+| PPU-SMI 1.22          Driver Version: 1.4.1-816bc0  HGGC Version: 13.0        |
++---------------------------------+----------------------+----------------------+
+| PPU  Name        Persistence M. | Bus-Id               | Volatile Uncorr. ECC |
+| Fan  Temp  Perf   Pwr:Usage/Cap | Memory-Usage         | PPU-Util  Compute M. |
+|                                 |                      |               MIG M. |
++=================================+======================+======================+
+| 0  PPU-ZW810E        N/A        | 00000000:05:00.0     |                    0 |
+| N/A  31C   N/A       69W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 1  PPU-ZW810E        N/A        | 00000000:06:00.0     |                    0 |
+| N/A  29C   N/A       67W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 2  PPU-ZW810E        N/A        | 00000000:0B:00.0     |                    0 |
+| N/A  28C   N/A       72W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 3  PPU-ZW810E        N/A        | 00000000:0C:00.0     |                    0 |
+| N/A  29C   N/A       73W / 400W | 2MiB / 97920MiB      |   0%        Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+
++-------------------------------------------------------------------------------+
+| Processes:                                                                    |
+| PPU    GI   CI   PID      Type  Process name                       PPU Memory |
+|        ID   ID                                                     Usage      |
++===============================================================================+
+| No running processes found                                                    |
++-------------------------------------------------------------------------------+
+W0608 17:36:33.209000 79590 site-packages/torch/distributed/run.py:803] 
+W0608 17:36:33.209000 79590 site-packages/torch/distributed/run.py:803] *****************************************
+W0608 17:36:33.209000 79590 site-packages/torch/distributed/run.py:803] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0608 17:36:33.209000 79590 site-packages/torch/distributed/run.py:803] *****************************************
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. [Gloo] Rank Expected number of connected peer ranks is : 33 is connected to 3
+ peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank [Gloo] Rank 1 is connected to 23 is connected to  peer ranks. 3Expected number of connected peer ranks is :  peer ranks. 3Expected number of connected peer ranks is : 3
+
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3[Gloo] Rank 
+2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[06/08/26 17:36:46] INFO     distributed env initialization done. Free cuda memory: 97137.11 MB                                                                                                                                                 
+[rank2]:W0608 17:36:46.892000 79642 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank0]:W0608 17:36:46.894000 79640 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank3]:W0608 17:36:46.896000 79643 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank1]:W0608 17:36:46.913000 79641 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:0    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:1    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:3    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:2    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+[06/08/26 17:37:29] INFO     model initialization done, start training. Free cuda memory: 65671.86 MB                                                                                                                                           
+                    INFO     fill_tables done for ['item', 'user_id']                                                                                                                                                                           
+[2026-06-08 17:37:30:727673][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=1, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 17:37:30:739660][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=3, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 17:37:30:740942][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=2, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 17:37:30:741220][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=0, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 17:37:55:761606][ALINPU INFO]: [offline_cache.hpp:299]Saved_file: /usr/local/PPU_SDK/rtccache/PPU0010/2.0.0-715aa1_677256525_gemm_ktype0_aiu1_mtype1_dtypeBF16xBF16xFP32xBF16xBF16_tile64x32x32x32x64x2_layout0x1x0x0_align1x1x8x8_splitk0_fusion5_prefetch0_fp32tc0_ptrhost1_schedule0.bin
+[06/08/26 17:38:14] INFO     [train] [iter 19, tokens 2244415, elapsed_time 44415.17 ms, achieved FLOPS 67.98 TFLOPS, MFU 8.64%]: loss 5.546218                                                                                                 
+[06/08/26 17:38:35] INFO     [train] [iter 39, tokens 2244415, elapsed_time 21554.12 ms, achieved FLOPS 140.09 TFLOPS, MFU 17.81%]: loss 5.545261                                                                                               
+[06/08/26 17:38:57] INFO     [train] [iter 59, tokens 2244415, elapsed_time 21543.66 ms, achieved FLOPS 140.16 TFLOPS, MFU 17.82%]: loss 5.545214                                                                                               
+[06/08/26 17:39:18] INFO     [train] [iter 79, tokens 2244415, elapsed_time 21545.03 ms, achieved FLOPS 140.15 TFLOPS, MFU 17.82%]: loss 5.544136                                                                                               
+[06/08/26 17:39:40] INFO     [train] [iter 99, tokens 2244415, elapsed_time 21545.87 ms, achieved FLOPS 140.14 TFLOPS, MFU 17.82%]: loss 5.483080                                                                                               
+[06/08/26 17:40:02] INFO     [train] [iter 119, tokens 2244415, elapsed_time 21546.17 ms, achieved FLOPS 140.14 TFLOPS, MFU 17.82%]: loss 5.354604                                                                                              
+[06/08/26 17:40:23] INFO     [train] [iter 139, tokens 2244415, elapsed_time 21547.47 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 5.226822                                                                                              
+[06/08/26 17:40:45] INFO     [train] [iter 159, tokens 2244415, elapsed_time 21547.99 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 5.138624                                                                                              
+[06/08/26 17:41:06] INFO     [train] [iter 179, tokens 2244415, elapsed_time 21544.18 ms, achieved FLOPS 140.15 TFLOPS, MFU 17.82%]: loss 5.064457                                                                                              
+[06/08/26 17:41:28] INFO     [train] [iter 199, tokens 2244415, elapsed_time 21551.65 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 5.021639                                                                                              
+[06/08/26 17:41:49] INFO     [train] [iter 219, tokens 2244415, elapsed_time 21549.23 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 5.023588                                                                                              
+[06/08/26 17:42:11] INFO     [train] [iter 239, tokens 2244415, elapsed_time 21548.38 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 4.979471                                                                                              
+[06/08/26 17:42:32] INFO     [train] [iter 259, tokens 2244415, elapsed_time 21547.56 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 4.984111                                                                                              
+[06/08/26 17:42:54] INFO     [train] [iter 279, tokens 2244415, elapsed_time 21543.26 ms, achieved FLOPS 140.16 TFLOPS, MFU 17.82%]: loss 4.937748                                                                                              
+[06/08/26 17:43:16] INFO     [train] [iter 299, tokens 2244415, elapsed_time 21549.09 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 4.904830                                                                                              
+[06/08/26 17:43:37] INFO     [train] [iter 319, tokens 2244415, elapsed_time 21544.82 ms, achieved FLOPS 140.15 TFLOPS, MFU 17.82%]: loss 4.853062                                                                                              
+[06/08/26 17:43:59] INFO     [train] [iter 339, tokens 2244415, elapsed_time 21552.37 ms, achieved FLOPS 140.10 TFLOPS, MFU 17.81%]: loss 4.802078                                                                                              
+[06/08/26 17:44:20] INFO     [train] [iter 359, tokens 2244415, elapsed_time 21549.38 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 4.721502                                                                                              
+[06/08/26 17:44:42] INFO     [train] [iter 379, tokens 2244415, elapsed_time 21552.70 ms, achieved FLOPS 140.10 TFLOPS, MFU 17.81%]: loss 4.608321                                                                                              
+[06/08/26 17:45:03] INFO     [train] [iter 399, tokens 2244415, elapsed_time 21559.02 ms, achieved FLOPS 140.06 TFLOPS, MFU 17.81%]: loss 4.520898                                                                                              
+[06/08/26 17:45:25] INFO     [train] [iter 419, tokens 2244415, elapsed_time 21562.37 ms, achieved FLOPS 140.04 TFLOPS, MFU 17.81%]: loss 4.494978                                                                                              
+[06/08/26 17:45:47] INFO     [train] [iter 439, tokens 2244415, elapsed_time 21554.34 ms, achieved FLOPS 140.09 TFLOPS, MFU 17.81%]: loss 4.482621                                                                                              
+[06/08/26 17:46:08] INFO     [train] [iter 459, tokens 2244415, elapsed_time 21554.38 ms, achieved FLOPS 140.09 TFLOPS, MFU 17.81%]: loss 4.450990                                                                                              
+[06/08/26 17:46:30] INFO     [train] [iter 479, tokens 2244415, elapsed_time 21549.56 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 4.411571                                                                                              
+[06/08/26 17:46:51] INFO     [train] [iter 499, tokens 2244415, elapsed_time 21558.88 ms, achieved FLOPS 140.06 TFLOPS, MFU 17.81%]: loss 4.295980                                                                                              
+[06/08/26 17:47:13] INFO     [train] [iter 519, tokens 2244415, elapsed_time 21557.68 ms, achieved FLOPS 140.07 TFLOPS, MFU 17.81%]: loss 4.203657                                                                                              
+[06/08/26 17:47:34] INFO     [train] [iter 539, tokens 2244415, elapsed_time 21550.93 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 4.223626                                                                                              
+[06/08/26 17:47:56] INFO     [train] [iter 559, tokens 2244415, elapsed_time 21551.74 ms, achieved FLOPS 140.10 TFLOPS, MFU 17.82%]: loss 4.238582                                                                                              
+[06/08/26 17:48:17] INFO     [train] [iter 579, tokens 2244415, elapsed_time 21547.92 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 4.186192                                                                                              
+[06/08/26 17:48:39] INFO     [train] [iter 599, tokens 2244415, elapsed_time 21553.08 ms, achieved FLOPS 140.10 TFLOPS, MFU 17.81%]: loss 4.148147                                                                                              
+[06/08/26 17:49:01] INFO     [train] [iter 619, tokens 2244415, elapsed_time 21549.44 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 4.069017                                                                                              
+[06/08/26 17:49:22] INFO     [train] [iter 639, tokens 2244415, elapsed_time 21548.46 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 3.984680                                                                                              
+[06/08/26 17:49:44] INFO     [train] [iter 659, tokens 2244415, elapsed_time 21550.76 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 3.938253                                                                                              
+[06/08/26 17:50:05] INFO     [train] [iter 679, tokens 2244415, elapsed_time 21550.99 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 3.926533                                                                                              
+[06/08/26 17:50:27] INFO     [train] [iter 699, tokens 2244415, elapsed_time 21564.26 ms, achieved FLOPS 140.02 TFLOPS, MFU 17.80%]: loss 3.855063                                                                                              
+[06/08/26 17:50:48] INFO     [train] [iter 719, tokens 2244415, elapsed_time 21551.41 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 3.782129                                                                                              
+[06/08/26 17:51:10] INFO     [train] [iter 739, tokens 2244415, elapsed_time 21556.59 ms, achieved FLOPS 140.07 TFLOPS, MFU 17.81%]: loss 3.736289                                                                                              
+[06/08/26 17:51:32] INFO     [train] [iter 759, tokens 2244415, elapsed_time 21551.41 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 3.708095                                                                                              
+[06/08/26 17:51:53] INFO     [train] [iter 779, tokens 2244415, elapsed_time 21550.87 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 3.702965                                                                                              
+[06/08/26 17:52:15] INFO     [train] [iter 799, tokens 2244415, elapsed_time 21547.98 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 3.702177                                                                                              
+[06/08/26 17:52:36] INFO     [train] [iter 819, tokens 2244415, elapsed_time 21559.47 ms, achieved FLOPS 140.05 TFLOPS, MFU 17.81%]: loss 3.691810                                                                                              
+[06/08/26 17:52:58] INFO     [train] [iter 839, tokens 2244415, elapsed_time 21545.35 ms, achieved FLOPS 140.15 TFLOPS, MFU 17.82%]: loss 3.665147                                                                                              
+[06/08/26 17:53:19] INFO     [train] [iter 859, tokens 2244415, elapsed_time 21552.31 ms, achieved FLOPS 140.10 TFLOPS, MFU 17.81%]: loss 3.609538                                                                                              
+[06/08/26 17:53:41] INFO     [train] [iter 879, tokens 2244415, elapsed_time 21549.96 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 3.543444                                                                                              
+[06/08/26 17:54:03] INFO     [train] [iter 899, tokens 2244415, elapsed_time 21548.54 ms, achieved FLOPS 140.13 TFLOPS, MFU 17.82%]: loss 3.506259                                                                                              
+[06/08/26 17:54:24] INFO     [train] [iter 919, tokens 2244415, elapsed_time 21549.34 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 3.463198                                                                                              
+[06/08/26 17:54:46] INFO     [train] [iter 939, tokens 2244415, elapsed_time 21553.19 ms, achieved FLOPS 140.10 TFLOPS, MFU 17.81%]: loss 3.422479                                                                                              
+[06/08/26 17:55:07] INFO     [train] [iter 959, tokens 2244415, elapsed_time 21556.49 ms, achieved FLOPS 140.07 TFLOPS, MFU 17.81%]: loss 3.394708                                                                                              
+[06/08/26 17:55:29] INFO     [train] [iter 979, tokens 2244415, elapsed_time 21551.45 ms, achieved FLOPS 140.11 TFLOPS, MFU 17.82%]: loss 3.390288                                                                                              
+[06/08/26 17:55:50] INFO     [train] [iter 999, tokens 2244415, elapsed_time 21549.65 ms, achieved FLOPS 140.12 TFLOPS, MFU 17.82%]: loss 3.403797                                                                                              
+[rank1]:[W608 17:55:53.756261777 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W608 17:55:53.756486157 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank2]:[W608 17:55:53.756753631 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank3]:[W608 17:55:53.766337024 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
