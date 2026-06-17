@@ -1,0 +1,504 @@
+Mon Jun  8 19:18:03 2026
++-------------------------------------------------------------------------------+
+| PPU-SMI 1.22          Driver Version: 1.4.1-816bc0  HGGC Version: 13.0        |
++---------------------------------+----------------------+----------------------+
+| PPU  Name        Persistence M. | Bus-Id               | Volatile Uncorr. ECC |
+| Fan  Temp  Perf   Pwr:Usage/Cap | Memory-Usage         | PPU-Util  Compute M. |
+|                                 |                      |               MIG M. |
++=================================+======================+======================+
+| 0  PPU-ZW810E        N/A        | 00000000:05:00.0     |                    0 |
+| N/A  42C   N/A      200W / 400W | 32130MiB / 97920MiB  |   100%      Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 1  PPU-ZW810E        N/A        | 00000000:06:00.0     |                    0 |
+| N/A  38C   N/A      182W / 400W | 75600MiB / 97920MiB  |   100%      Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 2  PPU-ZW810E        N/A        | 00000000:0B:00.0     |                    0 |
+| N/A  40C   N/A      211W / 400W | 63762MiB / 97920MiB  |   100%      Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+| 3  PPU-ZW810E        N/A        | 00000000:0C:00.0     |                    0 |
+| N/A  37C   N/A      164W / 400W | 42354MiB / 97920MiB  |   100%      Default  |
+|                                 |                      |             Disabled |
++---------------------------------+----------------------+----------------------+
+
++-------------------------------------------------------------------------------+
+| Processes:                                                                    |
+| PPU    GI   CI   PID      Type  Process name                       PPU Memory |
+|        ID   ID                                                     Usage      |
++===============================================================================+
+| 0      N/A  N/A  133017   C                                          31766MiB |
+| 1      N/A  N/A  133025   C                                          75236MiB |
+| 2      N/A  N/A  133032   C                                          63398MiB |
+| 3      N/A  N/A  133040   C                                          41990MiB |
++-------------------------------------------------------------------------------+
+W0608 19:18:07.896000 114907 site-packages/torch/distributed/run.py:803] 
+W0608 19:18:07.896000 114907 site-packages/torch/distributed/run.py:803] *****************************************
+W0608 19:18:07.896000 114907 site-packages/torch/distributed/run.py:803] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0608 19:18:07.896000 114907 site-packages/torch/distributed/run.py:803] *****************************************
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[06/08/26 19:18:45] INFO     distributed env initialization done. Free cuda memory: 65009.40 MB                                                                                                                                                 
+[rank2]:W0608 19:18:45.703000 114988 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank3]:W0608 19:18:45.708000 114996 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank1]:W0608 19:18:45.727000 114980 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank0]:W0608 19:18:45.777000 114973 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+[06/08/26 19:19:29] INFO     model initialization done, start training. Free cuda memory: 63259.84 MB                                                                                                                                           
+[06/08/26 19:19:31] INFO     fill_tables done for ['item', 'user_id']                                                                                                                                                                           
+[2026-06-08 19:19:33:265432][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=1, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 19:19:33:355102][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=3, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 19:19:33:450941][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=2, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 19:19:33:711890][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=0, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+!!!!!!! Segfault encountered !!!!!!!
+  File "../driver/src/core/hggc_module.cpp", line 800, in hggc::_HGfunction::init(hggc::_HGpipeline*, Alixpu::ElfReader::Reader const&)
+  File "../driver/src/core/hggc_module.cpp", line 359, in hggc::_HGmodule::_updateFunctions(hggc::_HGpipeline*, Alixpu::Abi::PipelineAbiReader const&)
+  File "../driver/src/core/hggc_module.cpp", line 170, in hggc::_HGmodule::_pipelineLoad()
+  File "../driver/src/core/hggc_module.cpp", line 464, in hggc::_HGmodule::getFunc(unsigned int, hggc::_HGfunction**)
+  File "../driver/src/core/hggc_library.cpp", line 418, in hggc::_HGkernel::getFunction(hggc::_HGfunction**, hggc::_HGcontext*)
+  File "../driver/src/api/hggc_api_library.cpp", line 331, in hgapiKernelGetFunction
+  File "../driver_layer/src/generated_hggc.cpp", line 4836, in hgKernelGetFunction
+  File ".././include/core/hggcrt_runtime.h", line 55, in hggcrt::_hggcRuntime::locateFunc(void const*, HGfunc_st**)
+  File "../src/api/hggcrt_api_execution.cpp", line 583, in hggcapiFuncSetAttribute
+  File "../profile/src/generated_hggcrt.cpp", line 4190, in hggcFuncSetAttribute
+  File "<unknown>", line 0, in cudaFuncSetAttribute
+  File "<unknown>", line 0, in split_embedding_nobag_backward_codegen_dense_unweighted_exact_cuda(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::SymInt, at::Tensor const&, long, at::Tensor const&, at::Tensor const&, long, long, double)
+  File "<unknown>", line 0, in c10::impl::make_boxed_from_unboxed_functor<c10::impl::detail::WrapFunctionIntoFunctor_<c10::CompileTimeFunctionPointer<at::Tensor (at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::SymInt, at::Tensor const&, long, at::Tensor const&, at::Tensor const&, long, long, double), &(split_embedding_nobag_backward_codegen_dense_unweighted_exact_cuda(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::SymInt, at::Tensor const&, long, at::Tensor const&, at::Tensor const&, long, long, double))>, at::Tensor, c10::guts::typelist::typelist<at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::SymInt, at::Tensor const&, long, at::Tensor const&, at::Tensor const&, long, long, double> >, false>::call(c10::OperatorKernel*, c10::OperatorHandle const&, c10::DispatchKeySet, std::vector<c10::IValue, std::allocator<c10::IValue> >*)
+  File "<unknown>", line 0, in torch::autograd::basicAutogradNotImplementedFallbackImpl(c10::OperatorHandle const&, c10::DispatchKeySet, std::vector<c10::IValue, std::allocator<c10::IValue> >*)
+  File "<unknown>", line 0, in c10::impl::BoxedKernelWrapper<at::Tensor (at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::SymInt, at::Tensor const&, long, at::Tensor const&, at::Tensor const&, long, long, double), void>::call(c10::BoxedKernel const&, c10::OperatorHandle const&, c10::DispatchKeySet, at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::SymInt, at::Tensor const&, long, at::Tensor const&, at::Tensor const&, long, long, double)
+  File "<unknown>", line 0, in SplitNoBagLookupFunction_dense_Op::backward(torch::autograd::AutogradContext*, std::vector<at::Tensor, std::allocator<at::Tensor> >)
+  File "<unknown>", line 0, in std::vector<at::Tensor, std::allocator<at::Tensor> > torch::autograd::CppNode_apply_functional<SplitNoBagLookupFunction_dense_Op>(std::vector<at::Tensor, std::allocator<at::Tensor> >&&, torch::autograd::AutogradContext&, std::vector<bool, std::allocator<bool> > const&, std::vector<torch::autograd::VariableInfo, std::allocator<torch::autograd::VariableInfo> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  File "<unknown>", line 0, in torch::autograd::CppNode<SplitNoBagLookupFunction_dense_Op>::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&)
+  File "<unknown>", line 0, in torch::autograd::Node::operator()(std::vector<at::Tensor, std::allocator<at::Tensor> >&&)
+  File "<unknown>", line 0, in torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&)
+  File "<unknown>", line 0, in torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&)
+  File "<unknown>", line 0, in torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool)
+  File "<unknown>", line 0, in torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool)
+  File "<unknown>", line 0, in 0xffffffffffffffff
+
+W0608 19:22:41.586000 114907 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 114973 closing signal SIGTERM
+W0608 19:22:41.588000 114907 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 114988 closing signal SIGTERM
+W0608 19:22:41.591000 114907 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 114996 closing signal SIGTERM
+E0608 19:22:55.496000 114907 site-packages/torch/distributed/elastic/multiprocessing/api.py:882] failed (exitcode: -11) local_rank: 1 (pid: 114980) of binary: /opt/ac2/bin/python
+Traceback (most recent call last):
+  File "/opt/ac2/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.9.0+ali.10.ppu2.0.0.cu129', 'console_scripts', 'torchrun')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ac2/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 293, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+========================================================
+training/pretrain_gr_ranking.py FAILED
+--------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+--------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-06-08_19:22:41
+  host      : model-performance-4ppu-7bd6d74d45-2wfsr
+  rank      : 1 (local_rank: 1)
+  exitcode  : -11 (pid: 114980)
+  error_file: <N/A>
+  traceback : Signal 11 (SIGSEGV) received by PID 114980
+========================================================

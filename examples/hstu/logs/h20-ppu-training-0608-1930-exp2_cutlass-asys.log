@@ -1,0 +1,614 @@
+/usr/bin/bash
+[Asight]: WARNING: HGGC Backtrace is required for HGGC Python backtrace. Turning it on by default.
+[Asight]: Profile executed.
+
+[Asight]: The current collecting environment is PPU
+[Asight]: CPU sampling is disabled because Ftrace is not available.
+[Asight]: CPU backtrace is disabled because Perf is not available.
+[Asight]: Start trace service, this may take a while...
+[Asight]: Collecting data...
+[Asight]: Starting target app: bash /workspace/recsys-examples/examples/hstu/training/benchmark/scripts/run_single_experiment_local.sh exp2_cutlass --exp-args=--balanced_shuffler --kernel_backend cutlass --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20 --nproc=4 --hstu-root=/workspace/recsys-examples/examples/hstu 
+
+[Asight]: Target application pid: 119987, pgrp:119987
+
+==========================================
+🚀 Running Experiment: exp2_cutlass
+==========================================
+
+Benchmark type:  e2e
+Output dir:      /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_194829/exp2_cutlass
+GIN options:     --balanced_shuffler --kernel_backend cutlass --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20
+GPUs:            4
+NSYS Profiling:  DISABLED
+==========================================
+
+📝 Generating gin config file...
+   Command: python /workspace/recsys-examples/examples/hstu/training/benchmark/scripts/generate_gin_config.py --balanced_shuffler --kernel_backend cutlass --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20 -o /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_194829/exp2_cutlass/exp2_cutlass_20260608_194829.gin
+
+# ============================================================================
+# Generated Gin Config
+#
+# Optimizations:
+#   - Attention Backend: cutlass
+#   - Recompute LayerNorm: False
+#   - Workload Balancer: Enabled
+#   - DynamicEmb Caching: False
+#   - Cache Ratio: 0.0
+#   - Eviction Strategy: lru
+#   - Pipeline: none
+#   - Tensor Parallel: 1
+# ============================================================================
+
+# ===== Trainer Configuration =====
+TrainerArgs.train_batch_size = 32
+TrainerArgs.eval_batch_size = 32
+TrainerArgs.log_interval = 20
+TrainerArgs.eval_interval = 101
+TrainerArgs.max_train_iters = 100
+TrainerArgs.max_eval_iters = 50
+TrainerArgs.seed = 1234
+TrainerArgs.pipeline_type = 'none'
+TrainerArgs.enable_balanced_shuffler = True  # Enable workload balancer
+
+# Profiling, we need iteration later than num_generated_batches to make sure jit-compiled kernels are cached
+TrainerArgs.profile = True
+TrainerArgs.profile_step_start = 150
+TrainerArgs.profile_step_end = 170
+
+# Checkpoint
+TrainerArgs.ckpt_save_dir = './checkpoints/generated_exp'
+TrainerArgs.ckpt_save_interval = 999999999
+
+# ===== Dataset Configuration =====
+# Main sequence features (item + action)
+item_and_action_feature/FeatureArgs.feature_names = ['item', 'action']
+item_and_action_feature/FeatureArgs.max_sequence_length = 4096
+item_and_action_feature/FeatureArgs.is_jagged = True
+item_seqlen_dist/RandomDistribution.dist_type = 'zipf'
+item_seqlen_dist/RandomDistribution.alpha = 1.2
+item_seqlen_dist/RandomDistribution.low = 1 # 256 is the minimum sequence length
+item_and_action_feature/FeatureArgs.seqlen_dist = @item_seqlen_dist/RandomDistribution()
+
+# Item-ID value distribution: Zipf (long-tail)
+item_value_dist/RandomDistribution.dist_type = 'zipf'
+item_value_dist/RandomDistribution.alpha = 1.05
+item_and_action_feature/FeatureArgs.value_dists = {
+    'item': @item_value_dist/RandomDistribution(),
+}
+# Contextual Features (only 3)
+user_contextual_features/FeatureArgs.feature_names = ['user_id', 'user_age']
+user_contextual_features/FeatureArgs.max_sequence_length = 1
+user_contextual_features/FeatureArgs.is_jagged = False
+user_id_value_dist/RandomDistribution.dist_type = 'zipf'
+user_id_value_dist/RandomDistribution.alpha = 1.05
+user_contextual_features/FeatureArgs.value_dists = {
+    'user_id': @user_id_value_dist/RandomDistribution(),
+}
+
+item_contextual_features/FeatureArgs.feature_names = ['item_category_l1']
+item_contextual_features/FeatureArgs.max_sequence_length = 1
+item_contextual_features/FeatureArgs.is_jagged = False
+
+BenchmarkDatasetArgs.feature_args = [
+    @item_and_action_feature/FeatureArgs(),
+    @user_contextual_features/FeatureArgs(),
+    @item_contextual_features/FeatureArgs(),
+]
+
+BenchmarkDatasetArgs.item_feature_name = 'item'
+BenchmarkDatasetArgs.contextual_feature_names = [
+    'user_id',
+    'user_age',
+    'item_category_l1',
+]  # Total 3 contextual features
+BenchmarkDatasetArgs.action_feature_name = 'action'
+BenchmarkDatasetArgs.max_num_candidates = 0
+BenchmarkDatasetArgs.num_generated_batches = 20
+
+# ===== Embedding Configuration =====
+# Item embedding (main ID)
+item_embedding/DynamicEmbeddingArgs.feature_names = ['item']
+item_embedding/DynamicEmbeddingArgs.table_name = 'item'
+item_embedding/DynamicEmbeddingArgs.item_vocab_size_or_capacity = 50000000  # 50M
+item_embedding/DynamicEmbeddingArgs.item_vocab_gpu_capacity_ratio = 0.0
+item_embedding/DynamicEmbeddingArgs.evict_strategy = 'lru'
+item_embedding/DynamicEmbeddingArgs.caching = False
+item_embedding/DynamicEmbeddingArgs.dist_type = 'roundrobin'
+
+# Action embedding
+action_embedding/EmbeddingArgs.feature_names = ['action']
+action_embedding/EmbeddingArgs.table_name = 'action'
+action_embedding/EmbeddingArgs.item_vocab_size_or_capacity = 100
+action_embedding/EmbeddingArgs.sharding_type = 'data_parallel'
+
+# Contextual Feature Embeddings (3 total)
+user_id_emb/DynamicEmbeddingArgs.feature_names = ['user_id']
+user_id_emb/DynamicEmbeddingArgs.table_name = 'user_id'
+user_id_emb/DynamicEmbeddingArgs.item_vocab_size_or_capacity = 50000000  # 50M
+user_id_emb/DynamicEmbeddingArgs.item_vocab_gpu_capacity_ratio = 0.0
+user_id_emb/DynamicEmbeddingArgs.evict_strategy = 'lru'
+user_id_emb/DynamicEmbeddingArgs.caching = False
+user_id_emb/DynamicEmbeddingArgs.dist_type = 'roundrobin'
+
+user_age_emb/EmbeddingArgs.feature_names = ['user_age']
+user_age_emb/EmbeddingArgs.table_name = 'user_age'
+user_age_emb/EmbeddingArgs.item_vocab_size_or_capacity = 100
+user_age_emb/EmbeddingArgs.sharding_type = 'data_parallel'
+
+item_cat_l1_emb/EmbeddingArgs.feature_names = ['item_category_l1']
+item_cat_l1_emb/EmbeddingArgs.table_name = 'item_category_l1'
+item_cat_l1_emb/EmbeddingArgs.item_vocab_size_or_capacity = 50
+item_cat_l1_emb/EmbeddingArgs.sharding_type = 'data_parallel'
+
+# Aggregate all embedding configs (5 embedding tables total)
+BenchmarkDatasetArgs.embedding_args = [
+    @item_embedding/DynamicEmbeddingArgs(),
+    @action_embedding/EmbeddingArgs(),
+    @user_id_emb/DynamicEmbeddingArgs(),
+    @user_age_emb/EmbeddingArgs(),
+    @item_cat_l1_emb/EmbeddingArgs(),
+]
+
+# ===== Network Configuration =====
+NetworkArgs.item_embedding_dim = 128
+NetworkArgs.contextual_embedding_dim = 128  # Same as item_embedding_dim
+NetworkArgs.num_layers = 8
+NetworkArgs.num_attention_heads = 4
+NetworkArgs.hidden_size = 1024
+NetworkArgs.kv_channels = 256
+
+# Kernel config
+NetworkArgs.kernel_backend = 'cutlass'
+NetworkArgs.recompute_input_layernorm = False
+NetworkArgs.recompute_input_silu = False
+
+# ===== Ranking Head =====
+RankingArgs.prediction_head_arch = [512, 8]
+RankingArgs.prediction_head_bias = True
+RankingArgs.num_tasks = 8
+RankingArgs.eval_metrics = ['auc']
+
+# ===== Optimizer =====
+OptimizerArgs.optimizer_str = 'adam'
+OptimizerArgs.learning_rate = 1e-3
+OptimizerArgs.adam_beta1 = 0.9
+OptimizerArgs.adam_beta2 = 0.999
+OptimizerArgs.adam_eps = 1e-8
+
+# ===== Parallelism =====
+TensorModelParallelArgs.tensor_model_parallel_size = 1
+
+
+[0;32m✅ Config saved to: /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_194829/exp2_cutlass/exp2_cutlass_20260608_194829.gin[0m
+
+📝 Logging to: /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_194829/exp2_cutlass/exp2_cutlass_20260608_194829.log
+⏰ Started at: Mon Jun  8 19:48:34 CST 2026
+
+W0608 19:48:37.975000 120104 site-packages/torch/distributed/run.py:803] 
+W0608 19:48:37.975000 120104 site-packages/torch/distributed/run.py:803] *****************************************
+W0608 19:48:37.975000 120104 site-packages/torch/distributed/run.py:803] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0608 19:48:37.975000 120104 site-packages/torch/distributed/run.py:803] *****************************************
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for v1.4.0 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.9.0+ali.10.ppu2.0.0.cu129
+            [0m
+            
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+WARNING: temporarily disabled some autotune configs for CUDA 12.8+
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+model-performance-4ppu-7bd6d74d45-2wfsr accl-lite version: v1.1.159.gd143c23
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. [Gloo] Rank Expected number of connected peer ranks is : 3
+3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[06/08/26 19:49:14] INFO     distributed env initialization done. Free cuda memory: 97136.99 MB                                                                                                                                                 
+[rank2]:W0608 19:49:14.623000 120186 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank3]:W0608 19:49:14.628000 120193 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank1]:W0608 19:49:14.646000 120178 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank0]:W0608 19:49:14.664000 120170 site-packages/torch/fx/_symbolic_trace.py:52] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+
+
+Storage layout: Host-only (single tier, CPU)
+-----------+---------+-----------+-----------+---------------------
+   tier    |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+-----------+---------+-----------+-----------+---------------------
+host (CPU) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+           | --------+-----------+-----------+---------------------
+           | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+-----------+---------+-----------+-----------+---------------------
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+[06/08/26 19:49:56] INFO     model initialization done, start training. Free cuda memory: 95387.87 MB                                                                                                                                           
+[06/08/26 19:49:57] INFO     fill_tables done for ['item', 'user_id']                                                                                                                                                                           
+[2026-06-08 19:49:58:266192][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=3, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 19:49:58:266436][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=2, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 19:49:58:266842][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=1, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[2026-06-08 19:49:58:274362][ALINPU INFO]: [/job_3904634/source/acompute/include/accontext.hpp:176][34m ACOMPUTE: [device caps] dev=0, name=PPU-ZW810E, sm8.0, smem=256KB, num_of_sm=64, freq_of_sm=1700MHz[0m
+[06/08/26 19:50:39] INFO     [train] [iter 19, tokens 2244415, elapsed_time 39547.61 ms, achieved FLOPS 76.35 TFLOPS, MFU 9.71%]: loss 5.546443                                                                                                 
+[06/08/26 19:51:05] INFO     [train] [iter 39, tokens 2244415, elapsed_time 22479.57 ms, achieved FLOPS 134.32 TFLOPS, MFU 17.08%]: loss 5.545238                                                                                               
+[06/08/26 19:51:30] INFO     [train] [iter 59, tokens 2244415, elapsed_time 22482.10 ms, achieved FLOPS 134.31 TFLOPS, MFU 17.08%]: loss 5.545197                                                                                               
+[06/08/26 19:51:56] INFO     [train] [iter 79, tokens 2244415, elapsed_time 22506.62 ms, achieved FLOPS 134.16 TFLOPS, MFU 17.06%]: loss 5.545124                                                                                               
+[06/08/26 19:52:22] INFO     [train] [iter 99, tokens 2244415, elapsed_time 22471.83 ms, achieved FLOPS 134.37 TFLOPS, MFU 17.09%]: loss 5.506230                                                                                               
+[rank1]:[W608 19:52:23.208028778 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank2]:[W608 19:52:23.318605255 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank3]:[W608 19:52:24.630945304 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W608 19:52:24.680049687 ProcessGroupNCCL.cpp:1528] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+
+==========================================
+✅ Experiment exp2_cutlass completed successfully!
+⏰ Finished at: Mon Jun  8 19:52:36 CST 2026
+📝 Log saved to: /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_194829/exp2_cutlass/exp2_cutlass_20260608_194829.log
+📄 Config file: /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_194829/exp2_cutlass/exp2_cutlass_20260608_194829.gin
+==========================================
+[Asight]: All target application created processes are terminated.
+[Asight]: Processing final trace data, this may take a while... 0%                                                                       [Asight]: Processing final trace data finish.
+Processing [======================================================================] 100 %
+[Asight]: Trace written into the output file: /workspace/recsys-examples/examples/hstu/logs/h20-ppu-training-0608-1930-exp2_cutlass.asysrep
+

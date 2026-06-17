@@ -67,6 +67,8 @@ Synthetic data with Zipf-distributed sequence lengths simulates the heavy-tailed
 
 ## 2. Results
 
+### 2.1 H100 (2-node, 16 GPUs)
+
 **Hardware**: 2× H100-SXM5-80GB nodes (16 GPUs total).
 
 **Run**: `cwdfw_benchmark_cont_full_nsys_20260528_202615`, commit `bc40d89c`. The table reports per-GPU average TFLOPS/MFU from the logged intervals after the first warmup log, iter 199-999. Peak columns report the best logged interval. MFU uses 989 BF16 dense Tensor Core TFLOPS per H100 GPU.
@@ -98,6 +100,39 @@ Synthetic data with Zipf-distributed sequence lengths simulates the heavy-tailed
    | Prefetch pipeline | 154 | 395.4 | 85.99 ms | 89.09 ms | 3.10 ms (3.33%) | 1.50 ms (1.61%) | 2.14 ms (2.30%) | 0.014 ms (0.015%) |
 
    See the [GPU time breakdown in `PERF_ANALYSIS.md`](./PERF_ANALYSIS.md#22-gpu-time-breakdown) for the category definitions. In short, NCCL is a small slice of the profiled GPU window, so the pipeline has little communication time to hide; the pipeline's own prefetch kernels are also too small to move end-to-end throughput much.
+
+### 2.2 PPU-ZW810E (single-node, 4 GPUs)
+
+**Hardware**: 4× PPU-ZW810E (98 GB each), single node.
+
+**Run**: `e2e_20260603_194209`. Option A single experiment (`exp2_cutlass`) with FBGEMM `hstu` package compiled from `jiayus-nvidia/FBGEMM` fork for PPU (sm 8.0). The table reports per-GPU average TFLOPS/MFU from logged intervals iter 199–999 (post-warmup). Peak column reports the best logged interval. MFU uses 787 BF16 TFLOPS per PPU-ZW810E GPU.
+
+**Configuration**: `--balanced_shuffler --kernel_backend cutlass --caching --ratio 0.1 --value_dist zipf --value_dist_alpha 1.05`, 4 GPUs, 1000 iterations.
+
+| Exp | Name | Avg TFLOPS/GPU | Avg MFU (%) | Peak TFLOPS/GPU | Peak MFU (%) | Notes |
+|-----|------|---------------:|------------:|-----------------:|-------------:|-------|
+| 2 | +Shuffler+CUTLASS+Caching | **140.1** | **17.82** | **140.2** | **17.82** | CUTLASS attention + workload-balanced shuffler + DynamicEmb caching (ratio 0.1) |
+
+#### Iteration breakdown
+
+| Iter | Elapsed (ms) | TFLOPS/GPU | MFU (%) | Loss |
+|-----:|------------:|----------:|-------:|-----:|
+| 19 *(warmup)* | 30,694 | 98.4 | 12.51 | 5.546 |
+| 39 | 21,547 | 140.1 | 17.82 | 5.545 |
+| 199 | 21,545 | 140.2 | 17.82 | 4.688 |
+| 499 | 21,546 | 140.1 | 17.82 | 4.190 |
+| 999 | 21,546 | 140.1 | 17.82 | 3.318 |
+
+#### PPU vs H100 comparison (exp2)
+
+| Metric | H100 (16 GPU) | PPU-ZW810E (4 GPU) |
+|--------|:---:|:---:|
+| Avg TFLOPS/GPU | 302.6 | 140.1 |
+| Avg MFU | 30.59% | 17.82% |
+| Peak TFLOPS/GPU | 329.4 | 140.2 |
+| Relative perf | 1.00× | 0.46× |
+
+> **Note**: The PPU-ZW810E is a different architecture from H100. The CUTLASS kernel was originally tuned for NVIDIA GPUs; PPU-specific kernel tuning and a full 6-experiment sweep (Option B, in progress) are expected to reveal further optimization headroom.
 
 ---
 

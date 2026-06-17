@@ -1,0 +1,61 @@
+================================================================================
+HSTU Benchmark Suite Summary
+================================================================================
+
+Batch Timestamp: 20260608_175648
+Started:         Mon Jun  8 17:56:48 CST 2026
+GPUs/Processes:  4
+NSYS Profiling:  DISABLED
+Experiment File: /workspace/recsys-examples/examples/hstu/training/benchmark/quick_test.txt
+
+Experiments (6 total):
+  1. exp0_baseline -> --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20
+  2. exp1_shuffler -> --balanced_shuffler --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20
+  3. exp2_cutlass -> --balanced_shuffler --kernel_backend cutlass --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20
+  4. exp3_caching -> --balanced_shuffler --kernel_backend cutlass --caching --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20
+  5. exp4_caching_hr -> --balanced_shuffler --kernel_backend cutlass --caching --dist_type hash_roundrobin --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20
+  6. exp5_prefetch -> --balanced_shuffler --kernel_backend cutlass --caching --dist_type hash_roundrobin --pipeline_type prefetch --value_dist zipf --value_dist_alpha 1.05 --max_train_iters 100 --log_interval 20
+
+--------------------------------------------------------------------------------
+Results:
+--------------------------------------------------------------------------------
+[1/6] exp0_baseline: ❌ FAILED (79s)
+    Started:  Mon Jun  8 17:56:48 CST 2026
+    Duration: 79s
+    Output:   /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_175648/exp0_baseline
+[2/6] exp1_shuffler: ❌ FAILED (9s)
+    Started:  Mon Jun  8 17:58:17 CST 2026
+    Duration: 9s
+    Output:   /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_175648/exp1_shuffler
+[3/6] exp2_cutlass: ❌ FAILED (9s)
+    Started:  Mon Jun  8 17:58:36 CST 2026
+    Duration: 9s
+    Output:   /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_175648/exp2_cutlass
+[4/6] exp3_caching: ❌ FAILED (7s)
+    Started:  Mon Jun  8 17:58:55 CST 2026
+    Duration: 7s
+    Output:   /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_175648/exp3_caching
+[5/6] exp4_caching_hr: ❌ FAILED (65s)
+    Started:  Mon Jun  8 17:59:12 CST 2026
+    Duration: 65s
+    Output:   /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_175648/exp4_caching_hr
+[6/6] exp5_prefetch: ✅ SUCCESS (216s)
+    Started:  Mon Jun  8 18:00:27 CST 2026
+    Duration: 216s
+    Output:   /workspace/recsys-examples/examples/hstu/training/benchmark/results/e2e_20260608_175648/exp5_prefetch
+
+--------------------------------------------------------------------------------
+Summary:
+--------------------------------------------------------------------------------
+Finished:    Mon Jun  8 18:04:03 CST 2026
+Total Time:  0h 7m 15s
+Successful:  1
+Failed:      5
+
+Failed experiments:
+  - exp0_baseline
+  - exp1_shuffler
+  - exp2_cutlass
+  - exp3_caching
+  - exp4_caching_hr
+================================================================================
