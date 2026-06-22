@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from collections import OrderedDict
 from typing import Optional, Tuple, Union
 
@@ -42,10 +43,18 @@ from ops.triton_ops.triton_norm_mul_dropout import (
 
 
 def _get_addmm_silu_fwd_impl(device: torch.device):
-    sm = torch.cuda.get_device_properties(device).major
-    if sm == 8:
+    # Allow override via environment variable for A/B testing.
+    # Set HSTU_GEMM_BACKEND=triton to force the Triton GEMM kernel.
+    backend = os.environ.get("HSTU_GEMM_BACKEND", "").lower()
+    if backend == "triton":
         return triton_addmm_silu_fwd
-    if sm in (9, 10):
+
+    sm = torch.cuda.get_device_properties(device).major
+    if sm in (8, 9, 10):
+        # Use cuBLAS (torch.addmm) for all supported SM versions.
+        # cuBLAS is significantly faster than the Triton GEMM kernel
+        # on SM 8 devices (e.g. PPU-ZW810E, A100) for the large matmul
+        # sizes used in HSTU (UVQK projection, output projection).
         return torch_addmm_silu_fwd
     raise ValueError(f"Unsupported SM major version: {sm}")
 

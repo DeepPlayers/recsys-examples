@@ -335,6 +335,10 @@ constexpr std::tuple<int, int, int> get_tile_size_fwd() {
     return {64, 64, 4};
   }
   if constexpr (Arch == 80) {
+#if defined(HSTU_FWD_TILE_M) && defined(HSTU_FWD_TILE_N) && defined(HSTU_FWD_NWARPS)
+    // PPU/tuning: override tile sizes via compile-time defines from setup.py
+    return {HSTU_FWD_TILE_M, HSTU_FWD_TILE_N, HSTU_FWD_NWARPS};
+#else
     if constexpr (Has_rab) {
       return {128, 64, 8};
     } else {
@@ -346,6 +350,7 @@ constexpr std::tuple<int, int, int> get_tile_size_fwd() {
         return {128, 96, 8};
       }
     }
+#endif
   } else {
     if constexpr (Has_rab) {
       if constexpr (kHeadDim <= 128) {
@@ -376,11 +381,16 @@ constexpr std::tuple<int, int, int> get_tile_size_bwd() {
     }
   }
   else {
+#if defined(HSTU_BWD_TILE_M) && defined(HSTU_BWD_TILE_N) && defined(HSTU_BWD_NWARPS)
+    // PPU/tuning: override tile sizes via compile-time defines from setup.py
+    return {HSTU_BWD_TILE_M, HSTU_BWD_TILE_N, HSTU_BWD_NWARPS};
+#else
     if constexpr (kHeadDim <= 128) {
       return {64, 128, 8};
     } else {
       return {64, 64, 8};
     }
+#endif
   }
 }
 

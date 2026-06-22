@@ -338,6 +338,18 @@ if not SKIP_CUDA_BUILD:
         # "--ptxas-options=-v",
         "-lineinfo",
     ]
+
+    # PPU tile size tuning: override CUTLASS attention kernel tile sizes
+    # via environment variables. These are passed as -D preprocessor defines
+    # and picked up by utils.h get_tile_size_fwd/bwd().
+    # Example: HSTU_FWD_TILE_M=64 HSTU_FWD_TILE_N=64 HSTU_FWD_NWARPS=4
+    for _tile_var in [
+        "HSTU_FWD_TILE_M", "HSTU_FWD_TILE_N", "HSTU_FWD_NWARPS",
+        "HSTU_BWD_TILE_M", "HSTU_BWD_TILE_N", "HSTU_BWD_NWARPS",
+    ]:
+        _tile_val = os.environ.get(_tile_var)
+        if _tile_val:
+            nvcc_flags.append(f"-D{_tile_var}={_tile_val}")
     include_dirs = [
         Path(this_dir) / "csrc" / "hstu_attn" / "src",
         cutlass_dir / "include",

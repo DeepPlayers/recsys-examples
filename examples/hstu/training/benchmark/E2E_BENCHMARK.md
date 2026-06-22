@@ -132,7 +132,7 @@ Synthetic data with Zipf-distributed sequence lengths simulates the heavy-tailed
 | Peak TFLOPS/GPU | 329.4 | 140.2 |
 | Relative perf | 1.00× | 0.46× |
 
-> **Note**: The PPU-ZW810E is a different architecture from H100. The CUTLASS kernel was originally tuned for NVIDIA GPUs; PPU-specific kernel tuning and a full 6-experiment sweep (Option B, in progress) are expected to reveal further optimization headroom.
+> **Note**: The PPU-ZW810E is a different architecture from H100. The results above were obtained before framework-level PPU optimizations (cuBLAS GEMM, extended autotune configs). With the optimizations described in the "PPU optimization environment variables" section (`HSTU_ENABLE_EXTENDED_BW_CONFIGS=TRUE`, cuBLAS GEMM enabled by default), GEMM and attention backward performance should improve. CUTLASS kernel tile tuning for PPU's 64 SMs and a full 6-experiment sweep (Option B, in progress) are expected to reveal further optimization headroom.
 
 ---
 
@@ -170,6 +170,21 @@ Each line is `exp_name,options_for_generate_gin_config.py`. The script `generate
 | `CUDA_MEM_WATCHDOG` | `0` | Auto-call `torch.cuda.empty_cache()` when caching allocator fragmentation exceeds threshold |
 
 Set before launching training, e.g. `export CUDA_MEM_WATCHDOG=1` in the SLURM job script or shell.
+
+### PPU optimization environment variables
+
+The framework includes several optimizations that are particularly important for PPU-ZW810E (SM 8.0) devices. These are enabled by default but can be controlled for A/B testing:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `HSTU_GEMM_BACKEND` | *(auto)* | Controls GEMM forward implementation. Default: `cublas` (torch.addmm) for all SM versions. Set to `triton` to force the Triton GEMM kernel (original SM 8 behavior). cuBLAS is significantly faster for the large matmul sizes used in HSTU. |
+| `HSTU_ENABLE_EXTENDED_BW_CONFIGS` | `FALSE` | Re-enables 8 Triton attention backward autotune configs that are disabled on CUDA ≥ 12.8. Set to `TRUE` on PPU (CUDA 12.9) to expand the tile size search space with important BLOCK_N=64/128 configurations. |
+
+**Recommended PPU launch prefix**:
+```bash
+export HSTU_ENABLE_EXTENDED_BW_CONFIGS=TRUE
+# HSTU_GEMM_BACKEND defaults to cublas — no action needed
+```
 
 ### Option A: Single experiment (local)
 

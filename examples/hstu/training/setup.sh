@@ -104,7 +104,7 @@ setup(
             sources=[
                 "ops/cuda_ops/csrc/jagged_tensor_op_cuda.cpp",
                 "ops/cuda_ops/csrc/jagged_tensor_op_kernel.cu",
-                "ops/cuda_ops/csrc/kjm_aux_op.cpp",
+                "ops/cuda_ops/csrc/kjt_aux_op.cpp",
             ],
             extra_compile_args={
                 "cxx": ["-O3", "-std=c++17", "-DWITH_PYBIND11=1"],
@@ -279,10 +279,10 @@ this_dir = os.path.dirname(os.path.abspath(__file__))
 repo_root = Path(this_dir).resolve().parent.parent.parent.parent  # FBGEMM root
 
 # CUTLASS headers from recsys-examples
-cutlass_dir = repo_root.parent.parent.parent / "third_party" / "cutlass"
+cutlass_dir = repo_root.parent.parent.parent.parent / "third_party" / "cutlass"
 if not cutlass_dir.exists():
     # Fallback: try relative to recsys-examples
-    cutlass_dir = Path("/workspace/recsys-examples/third_party/cutlass")
+    cutlass_dir = Path("/wang/recsys-examples/third_party/cutlass")
 
 HSTU_ARCH_LIST = os.getenv("HSTU_ARCH_LIST", "8.0").split()
 

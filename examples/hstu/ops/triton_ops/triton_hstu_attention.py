@@ -27,6 +27,7 @@
 # limitations under the License.
 #!/usr/bin/env python3
 
+import os
 from typing import List, Optional, Tuple
 
 import torch
@@ -2311,7 +2312,18 @@ def _get_bw_configs() -> List[triton.Config]:
             pre_hook=_bwd_pre_hook,
         ),
     ]
-    if torch.cuda.is_available() and torch.version.cuda < "12.8":
+    # On CUDA >= 12.8, these configs were originally disabled due to
+    # compatibility concerns with NVIDIA Triton. For PPU (which uses CUDA 12.9)
+    # and other environments where these configs work correctly, they can be
+    # re-enabled via HSTU_ENABLE_EXTENDED_BW_CONFIGS=TRUE.
+    # These configs include important BLOCK_N=64/128 tile sizes that are
+    # particularly valuable for devices with fewer SMs (e.g. PPU with 64 SMs).
+    _enable_extended_bw = (
+        os.environ.get("HSTU_ENABLE_EXTENDED_BW_CONFIGS", "").lower() == "true"
+    )
+    if torch.cuda.is_available() and (
+        torch.version.cuda < "12.8" or _enable_extended_bw
+    ):
         configs += [
             triton.Config(
                 {"BLOCK_M": 16, "BLOCK_N": 64, "SEQUENCE_PARALLEL": False, "UNROLL": 1},
@@ -2368,7 +2380,10 @@ def _get_bw_configs() -> List[triton.Config]:
             ),
         ]
     else:
-        print("WARNING: temporarily disabled some autotune configs for CUDA 12.8+")
+        print(
+            "WARNING: temporarily disabled some autotune configs for CUDA 12.8+; "
+            "set HSTU_ENABLE_EXTENDED_BW_CONFIGS=TRUE to re-enable (recommended for PPU)"
+        )
     return configs
 
 
