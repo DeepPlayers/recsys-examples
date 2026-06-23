@@ -51,3 +51,8 @@ results/
 .docs/
 .SKILLS/
 .cursor/
+
+# PPU benchmark artifacts
+examples/hstu/training/ppu/logs/
+examples/hstu/training/benchmark/logs/
+examples/hstu/training/benchmark/results/
