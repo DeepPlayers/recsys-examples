@@ -1,0 +1,232 @@
+Thu Jun  4 15:20:39 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.20             Driver Version: 570.133.20     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H20                     On  |   00000000:08:00.0 Off |                    0 |
+| N/A   49C    P0             80W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H20                     On  |   00000000:7E:00.0 Off |                    0 |
+| N/A   40C    P0             74W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA H20                     On  |   00000000:A2:00.0 Off |                    0 |
+| N/A   51C    P0             79W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA H20                     On  |   00000000:C6:00.0 Off |                    0 |
+| N/A   44C    P0             75W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   4  NVIDIA H20                     On  |   00000001:09:00.0 Off |                    0 |
+| N/A   32C    P0             72W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   5  NVIDIA H20                     On  |   00000001:7F:00.0 Off |                    0 |
+| N/A   36C    P0             73W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   6  NVIDIA H20                     On  |   00000001:A3:00.0 Off |                    0 |
+| N/A   37C    P0             73W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   7  NVIDIA H20                     On  |   00000001:C7:00.0 Off |                    0 |
+| N/A   38C    P0             73W /  500W |       0MiB /  97871MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+W0604 15:20:41.724000 106908 site-packages/torch/distributed/run.py:852] 
+W0604 15:20:41.724000 106908 site-packages/torch/distributed/run.py:852] *****************************************
+W0604 15:20:41.724000 106908 site-packages/torch/distributed/run.py:852] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0604 15:20:41.724000 106908 site-packages/torch/distributed/run.py:852] *****************************************
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0604 15:20:47.768931 106980 storage_manager.h:211] can not find env ALIOSS_END_POINT, failed to init oss client
+I0604 15:20:47.768929 106978 storage_manager.h:211] can not find env ALIOSS_END_POINT, failed to init oss client
+I0604 15:20:47.768930 106979 storage_manager.h:211] can not find env ALIOSS_END_POINT, failed to init oss client
+W0604 15:20:47.768954 106978 storage_manager.h:60] Failed to init oss client, please make sure all env has been exported correctly!
+W0604 15:20:47.768954 106980 storage_manager.h:60] Failed to init oss client, please make sure all env has been exported correctly!
+W0604 15:20:47.768954 106979 storage_manager.h:60] Failed to init oss client, please make sure all env has been exported correctly!
+I0604 15:20:47.769057 106979 flags.cc:20] ZeusEmbedding loaded. Build at 11:34:33 May 24 2026, git commit id ae27eaa9e383d65e88194828f6400cd4fdf75816, branch syw_dev.torch
+I0604 15:20:47.769057 106978 flags.cc:20] ZeusEmbedding loaded. Build at 11:34:33 May 24 2026, git commit id ae27eaa9e383d65e88194828f6400cd4fdf75816, branch syw_dev.torch
+I0604 15:20:47.769060 106980 flags.cc:20] ZeusEmbedding loaded. Build at 11:34:33 May 24 2026, git commit id ae27eaa9e383d65e88194828f6400cd4fdf75816, branch syw_dev.torch
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0604 15:20:47.769356 106981 storage_manager.h:211] can not find env ALIOSS_END_POINT, failed to init oss client
+W0604 15:20:47.769371 106981 storage_manager.h:60] Failed to init oss client, please make sure all env has been exported correctly!
+I0604 15:20:47.769454 106981 flags.cc:20] ZeusEmbedding loaded. Build at 11:34:33 May 24 2026, git commit id ae27eaa9e383d65e88194828f6400cd4fdf75816, branch syw_dev.torch
+[Rank 0] PID=106978, Node=N/A, LocalRank=0
+[Rank 2] PID=106980, Node=N/A, LocalRank=2
+[Rank 3] PID=106981, Node=N/A, LocalRank=3
+[Rank 1] PID=106979, Node=N/A, LocalRank=1
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank [Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 31 is connected to 3 peer ranks. Expected number of connected peer ranks is : 
+3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[06/04/26 15:20:54] INFO     distributed env initialization done. Free cuda memory: 96165.38 MB                                                                                                                                                 
+[rank2]:W0604 15:20:54.212000 106980 site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank0]:W0604 15:20:54.213000 106978 site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank3]:W0604 15:20:54.218000 106981 site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+[rank1]:W0604 15:20:54.230000 106979 site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:megatron.core.tensor_parallel.random:CPU RNG state changed within GPU RNG context
+WARNING:root:Sharding spec not found for _embedding_collection._data_parallel_embedding_collection.action
+WARNING:root:Sharding spec not found for _embedding_collection._data_parallel_embedding_collection.user_age
+WARNING:root:Sharding spec not found for _embedding_collection._data_parallel_embedding_collection.item_category_l1
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:1    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:3    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:2    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+
+
+Storage layout: Caching (HBM cache + Host full backing; HBM rows duplicate Host)
+--------------------+---------+-----------+-----------+---------------------
+        tier        |  table  |  init(MB) |  peak(MB) |   emb/opt peak(MB)  
+--------------------+---------+-----------+-----------+---------------------
+hbm cache/cuda:0    | item    | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | user_id | 14653.5   | 14648.438 | 4882.812 / 9765.625 
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 29307     | 29296.875 | 9765.625 / 19531.25 
+--------------------+---------+-----------+-----------+---------------------
+host backing (full) | item    | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | user_id | 18310.688 | 18310.688 | 6103.562 / 12207.125
+                    | --------+-----------+-----------+---------------------
+                    | TOTAL   | 36621.375 | 36621.375 | 12207.125 / 24414.25
+--------------------+---------+-----------+-----------+---------------------
+Note: HBM cache rows duplicate backing rows; total memory ≈ HBM cache + Host/PS backing (no subtract).
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+WARNING:torchrec.distributed.utils:Sharding Type is data_parallel, caching params will be ignored
+[06/04/26 15:21:02] INFO     model initialization done, start training. Free cuda memory: 64783.38 MB                                                                                                                                           
+                    INFO     fill_tables done for ['item', 'user_id']                                                                                                                                                                           
+[06/04/26 15:21:17] INFO     [train] [iter 19, tokens 2244415, elapsed_time 14028.15 ms, achieved FLOPS 215.25 TFLOPS, MFU 8.51%]: loss 5.546328                                                                                                
+[06/04/26 15:21:25] INFO     [train] [iter 39, tokens 2244415, elapsed_time 6821.79 ms, achieved FLOPS 442.62 TFLOPS, MFU 17.49%]: loss 5.545281                                                                                                
+[06/04/26 15:21:32] INFO     [train] [iter 59, tokens 2244415, elapsed_time 6802.11 ms, achieved FLOPS 443.91 TFLOPS, MFU 17.54%]: loss 5.545206                                                                                                
+[06/04/26 15:21:41] INFO     [train] [iter 79, tokens 2244415, elapsed_time 6805.09 ms, achieved FLOPS 443.71 TFLOPS, MFU 17.54%]: loss 5.544010                                                                                                
+[06/04/26 15:21:49] INFO     [train] [iter 99, tokens 2244415, elapsed_time 6809.28 ms, achieved FLOPS 443.44 TFLOPS, MFU 17.52%]: loss 5.474752                                                                                                
+[06/04/26 15:21:56] INFO     [train] [iter 119, tokens 2244415, elapsed_time 6812.70 ms, achieved FLOPS 443.22 TFLOPS, MFU 17.52%]: loss 5.314050                                                                                               
+[06/04/26 15:22:04] INFO     [train] [iter 139, tokens 2244415, elapsed_time 6812.50 ms, achieved FLOPS 443.23 TFLOPS, MFU 17.52%]: loss 5.250636                                                                                               
+[06/04/26 15:22:12] INFO     [train] [iter 159, tokens 2244415, elapsed_time 6798.63 ms, achieved FLOPS 444.13 TFLOPS, MFU 17.55%]: loss 5.203490                                                                                               
+[06/04/26 15:22:19] INFO     [train] [iter 179, tokens 2244415, elapsed_time 6789.79 ms, achieved FLOPS 444.71 TFLOPS, MFU 17.58%]: loss 5.139818                                                                                               
+[06/04/26 15:22:27] INFO     [train] [iter 199, tokens 2244415, elapsed_time 6786.92 ms, achieved FLOPS 444.90 TFLOPS, MFU 17.58%]: loss 5.091194                                                                                               
+[06/04/26 15:22:35] INFO     [train] [iter 219, tokens 2244415, elapsed_time 6800.21 ms, achieved FLOPS 444.03 TFLOPS, MFU 17.55%]: loss 5.054334                                                                                               
+[06/04/26 15:22:43] INFO     [train] [iter 239, tokens 2244415, elapsed_time 6788.88 ms, achieved FLOPS 444.77 TFLOPS, MFU 17.58%]: loss 4.980323                                                                                               
+[06/04/26 15:22:50] INFO     [train] [iter 259, tokens 2244415, elapsed_time 6782.08 ms, achieved FLOPS 445.22 TFLOPS, MFU 17.60%]: loss 4.893065                                                                                               
+[06/04/26 15:22:58] INFO     [train] [iter 279, tokens 2244415, elapsed_time 7155.57 ms, achieved FLOPS 421.98 TFLOPS, MFU 16.68%]: loss 4.805192                                                                                               
+[06/04/26 15:23:07] INFO     [train] [iter 299, tokens 2244415, elapsed_time 7209.12 ms, achieved FLOPS 418.84 TFLOPS, MFU 16.55%]: loss 4.736084                                                                                               
+[06/04/26 15:23:15] INFO     [train] [iter 319, tokens 2244415, elapsed_time 7194.49 ms, achieved FLOPS 419.70 TFLOPS, MFU 16.59%]: loss 4.706819                                                                                               
+[06/04/26 15:23:23] INFO     [train] [iter 339, tokens 2244415, elapsed_time 6795.94 ms, achieved FLOPS 444.31 TFLOPS, MFU 17.56%]: loss 4.672060                                                                                               
+[06/04/26 15:23:30] INFO     [train] [iter 359, tokens 2244415, elapsed_time 6777.68 ms, achieved FLOPS 445.51 TFLOPS, MFU 17.61%]: loss 4.594858                                                                                               
+[06/04/26 15:23:38] INFO     [train] [iter 379, tokens 2244415, elapsed_time 6774.86 ms, achieved FLOPS 445.69 TFLOPS, MFU 17.61%]: loss 4.511335                                                                                               
+[06/04/26 15:23:45] INFO     [train] [iter 399, tokens 2244415, elapsed_time 6777.12 ms, achieved FLOPS 445.54 TFLOPS, MFU 17.61%]: loss 4.477010                                                                                               
+[06/04/26 15:23:53] INFO     [train] [iter 419, tokens 2244415, elapsed_time 6781.33 ms, achieved FLOPS 445.27 TFLOPS, MFU 17.60%]: loss 4.441038                                                                                               
+[06/04/26 15:24:01] INFO     [train] [iter 439, tokens 2244415, elapsed_time 6773.31 ms, achieved FLOPS 445.79 TFLOPS, MFU 17.62%]: loss 4.416527                                                                                               
+[06/04/26 15:24:08] INFO     [train] [iter 459, tokens 2244415, elapsed_time 6785.08 ms, achieved FLOPS 445.02 TFLOPS, MFU 17.59%]: loss 4.399264                                                                                               
+[06/04/26 15:24:16] INFO     [train] [iter 479, tokens 2244415, elapsed_time 6777.06 ms, achieved FLOPS 445.55 TFLOPS, MFU 17.61%]: loss 4.381707                                                                                               
+[06/04/26 15:24:24] INFO     [train] [iter 499, tokens 2244415, elapsed_time 6779.74 ms, achieved FLOPS 445.37 TFLOPS, MFU 17.60%]: loss 4.370768                                                                                               
+[06/04/26 15:24:31] INFO     [train] [iter 519, tokens 2244415, elapsed_time 6771.07 ms, achieved FLOPS 445.94 TFLOPS, MFU 17.62%]: loss 4.296616                                                                                               
+[06/04/26 15:24:40] INFO     [train] [iter 539, tokens 2244415, elapsed_time 6775.70 ms, achieved FLOPS 445.64 TFLOPS, MFU 17.61%]: loss 4.268199                                                                                               
+[06/04/26 15:24:47] INFO     [train] [iter 559, tokens 2244415, elapsed_time 6770.08 ms, achieved FLOPS 446.01 TFLOPS, MFU 17.63%]: loss 4.201377                                                                                               
+[06/04/26 15:24:55] INFO     [train] [iter 579, tokens 2244415, elapsed_time 6772.54 ms, achieved FLOPS 445.84 TFLOPS, MFU 17.62%]: loss 4.185939                                                                                               
+[06/04/26 15:25:02] INFO     [train] [iter 599, tokens 2244415, elapsed_time 6770.69 ms, achieved FLOPS 445.97 TFLOPS, MFU 17.62%]: loss 4.136933                                                                                               
+[06/04/26 15:25:10] INFO     [train] [iter 619, tokens 2244415, elapsed_time 6774.70 ms, achieved FLOPS 445.70 TFLOPS, MFU 17.61%]: loss 4.051675                                                                                               
+[06/04/26 15:25:18] INFO     [train] [iter 639, tokens 2244415, elapsed_time 6780.96 ms, achieved FLOPS 445.29 TFLOPS, MFU 17.60%]: loss 3.967799                                                                                               
+[06/04/26 15:25:26] INFO     [train] [iter 659, tokens 2244415, elapsed_time 6773.72 ms, achieved FLOPS 445.77 TFLOPS, MFU 17.62%]: loss 3.904973                                                                                               
+[06/04/26 15:25:34] INFO     [train] [iter 679, tokens 2244415, elapsed_time 6765.47 ms, achieved FLOPS 446.31 TFLOPS, MFU 17.64%]: loss 3.844117                                                                                               
+[06/04/26 15:25:41] INFO     [train] [iter 699, tokens 2244415, elapsed_time 6776.07 ms, achieved FLOPS 445.61 TFLOPS, MFU 17.61%]: loss 3.785902                                                                                               
+[06/04/26 15:25:49] INFO     [train] [iter 719, tokens 2244415, elapsed_time 6770.21 ms, achieved FLOPS 446.00 TFLOPS, MFU 17.63%]: loss 3.739593                                                                                               
+[06/04/26 15:25:57] INFO     [train] [iter 739, tokens 2244415, elapsed_time 6770.29 ms, achieved FLOPS 445.99 TFLOPS, MFU 17.63%]: loss 3.693633                                                                                               
+[06/04/26 15:26:04] INFO     [train] [iter 759, tokens 2244415, elapsed_time 6769.90 ms, achieved FLOPS 446.02 TFLOPS, MFU 17.63%]: loss 3.633680                                                                                               
+[06/04/26 15:26:12] INFO     [train] [iter 779, tokens 2244415, elapsed_time 6780.44 ms, achieved FLOPS 445.32 TFLOPS, MFU 17.60%]: loss 3.572605                                                                                               
+[06/04/26 15:26:20] INFO     [train] [iter 799, tokens 2244415, elapsed_time 6769.78 ms, achieved FLOPS 446.03 TFLOPS, MFU 17.63%]: loss 3.520940                                                                                               
+[06/04/26 15:26:28] INFO     [train] [iter 819, tokens 2244415, elapsed_time 6767.42 ms, achieved FLOPS 446.18 TFLOPS, MFU 17.63%]: loss 3.485752                                                                                               
+[06/04/26 15:26:35] INFO     [train] [iter 839, tokens 2244415, elapsed_time 6766.75 ms, achieved FLOPS 446.23 TFLOPS, MFU 17.63%]: loss 3.442922                                                                                               
+[06/04/26 15:26:43] INFO     [train] [iter 859, tokens 2244415, elapsed_time 6777.81 ms, achieved FLOPS 445.50 TFLOPS, MFU 17.61%]: loss 3.420736                                                                                               
+[06/04/26 15:26:51] INFO     [train] [iter 879, tokens 2244415, elapsed_time 6777.18 ms, achieved FLOPS 445.54 TFLOPS, MFU 17.61%]: loss 3.381809                                                                                               
+[06/04/26 15:26:59] INFO     [train] [iter 899, tokens 2244415, elapsed_time 6769.56 ms, achieved FLOPS 446.04 TFLOPS, MFU 17.63%]: loss 3.344192                                                                                               
+[06/04/26 15:27:06] INFO     [train] [iter 919, tokens 2244415, elapsed_time 6769.38 ms, achieved FLOPS 446.05 TFLOPS, MFU 17.63%]: loss 3.313442                                                                                               
+[06/04/26 15:27:14] INFO     [train] [iter 939, tokens 2244415, elapsed_time 6773.65 ms, achieved FLOPS 445.77 TFLOPS, MFU 17.62%]: loss 3.293065                                                                                               
+[06/04/26 15:27:21] INFO     [train] [iter 959, tokens 2244415, elapsed_time 6776.04 ms, achieved FLOPS 445.61 TFLOPS, MFU 17.61%]: loss 3.259395                                                                                               
+[06/04/26 15:27:29] INFO     [train] [iter 979, tokens 2244415, elapsed_time 6774.00 ms, achieved FLOPS 445.75 TFLOPS, MFU 17.62%]: loss 3.215863                                                                                               
+[06/04/26 15:27:37] INFO     [train] [iter 999, tokens 2244415, elapsed_time 6761.22 ms, achieved FLOPS 446.59 TFLOPS, MFU 17.65%]: loss 3.170698                                                                                               
+[rank2]:[W604 15:27:39.306824773 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W604 15:27:39.385648717 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank1]:[W604 15:27:39.385933908 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank3]:[W604 15:27:39.639260423 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
